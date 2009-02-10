@@ -1,0 +1,124 @@
+Campaign:
+  actAs:
+    Timestampable:
+      created: { name: fecha_ingreso }
+      updated: { name: fecha_actualizacion }
+  columns:
+    id: { type: integer(4), primary: true, autonumeric: true }
+    nombre: { type: string(255), notnull: true }
+    vendedor_id: { type: integer(4) }
+    categoria_id: { type: integer(4) }
+    producto_id: { type: integer(4) }
+    specialty_id: { type: integer(4) }
+    cliente: { type: string(255) }
+    orden: { type: string(255) }
+    facturacion: { type: float }
+    fecha_inicio: { type: timestamp }
+    fecha_cierre: { type: timestamp }
+    activa: { type: boolean, default: 1 }
+  relations:
+    Producto:
+      local: producto_id
+      foreign: id
+      foreignAlias: Campaigns
+    Categoria:
+      local: categoria_id
+      foreign: id
+      class: CategoriaCampaign
+      foreignAlias: Campaigns
+    Specialty:
+      local: specialty_id
+      foreign: id
+      foreignAlias: Campaigns
+
+CategoriaCampaign:
+  columns:
+    id: { type: integer(4), primary: true, autonumeric: true }
+    nombre: { type: string(255) }
+
+Producto:
+  columns:
+    id: { type: integer(4), primary: true, autonumeric: true }
+    nombre: { type: string(255) }
+
+Specialty:
+  columns:
+    id: { type: integer(4), primary: true, autonumeric: true }
+    nombre: { type: string(255) }
+
+Item:
+  actAs:
+    Timestampable:
+      created: { disabled: true }
+      updated: { name: fecha_actualizacion }
+  columns:
+    id: { type: integer(4), primary: true, autonumeric: true }
+    plaza_id: { integer(4) }
+    categoria_id: { type: integer(4) }
+    tipo_id: { type: integer(4) }
+    responsable_id: { type: integer(4) }
+    prueba_color: { type: timestamp, default: null }
+    impresor_id: { type: integer(4) }
+    entrada_impresor: { type: timestamp, default: null }
+    salida_impresor: { type: timestamp, default: null }
+    mensajeria_id: { type: integer(4) }
+    guia: { type: string(255) }
+    fecha_envio: { type: timestamp, default: null }
+    fecha_recepcion: { type: timestamp, defautl: null }
+    permisionario: { type: string(255) }
+    carroceria: { type: string(255) }    
+    compra_directa: { type: string(255) }    
+    ruta: { type: string(255) }
+    placas: { type: string(255) }
+    economico: { type: string(255) }
+    instalacion: { type: timestamp, default: null }
+    desmontaje: { type: timestamp, default: null }
+    evidencia: { type: boolean }
+  relations:
+    Plaza:
+      local: plaza_id
+      foreign: id
+      foreignAlias: Items
+    Categoria:
+      local: categoria_id
+      foreign: id
+      foreignAlias: Items
+      class: CategoriaItem
+    Tipo:
+      local: tipo_id
+      foreign: id
+      foreignAlias: Items
+    Impresor:
+      local: impresor_id
+      foreign: id
+      foreignAlias: Items
+    Mensajeria:
+      local: mensajeria_id
+      foreign: id
+      foreignAlias: Items
+
+Plaza:
+  columns:
+    id: { type: integer(4), primary: true, autonumeric: true }
+    nombre: { type: string(255) }
+
+CategoriaItem:
+  columns:
+    id: { type: integer(4), primary: true, autonumeric: true }
+    nombre: { type: string(255) }
+
+Tipo:
+  columns:
+    id: { type: integer(4), primary: true, autonumeric: true }
+    nombre: { type: string(255) }
+
+Impresor:
+  columns:
+    id: { type: integer(4), primary: true, autonumeric: true }
+    nombre: { type: string(255) }
+
+Mensajeria:
+  columns:
+    id: { type: integer(4), primary: true, autonumeric: true }
+    nombre: { type: string(255) }
+
