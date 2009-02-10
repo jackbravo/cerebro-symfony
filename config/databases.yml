@@ -1,11 +1,3 @@
-dev:
-  doctrine:
-    param:
-
-test:
-  doctrine:
-    param:
-
 all:
   doctrine:
     class:        sfDoctrineDatabase
