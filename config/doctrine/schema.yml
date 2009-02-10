@@ -4,7 +4,7 @@ Campaign:
       created: { name: fecha_ingreso }
       updated: { name: fecha_actualizacion }
   columns:
-    id: { type: integer(4), primary: true, autonumeric: true }
+    id: { type: integer(4), primary: true, autoincrement: true }
     nombre: { type: string(255), notnull: true }
     vendedor_id: { type: integer(4) }
     categoria_id: { type: integer(4) }
@@ -33,17 +33,17 @@ Campaign:
 
 CategoriaCampaign:
   columns:
-    id: { type: integer(4), primary: true, autonumeric: true }
+    id: { type: integer(4), primary: true, autoincrement: true }
     nombre: { type: string(255) }
 
 Producto:
   columns:
-    id: { type: integer(4), primary: true, autonumeric: true }
+    id: { type: integer(4), primary: true, autoincrement: true }
     nombre: { type: string(255) }
 
 Specialty:
   columns:
-    id: { type: integer(4), primary: true, autonumeric: true }
+    id: { type: integer(4), primary: true, autoincrement: true }
     nombre: { type: string(255) }
 
 Item:
@@ -52,8 +52,8 @@ Item:
       created: { disabled: true }
       updated: { name: fecha_actualizacion }
   columns:
-    id: { type: integer(4), primary: true, autonumeric: true }
-    plaza_id: { integer(4) }
+    id: { type: integer(4), primary: true, autoincrement: true }
+    plaza_id: { type: integer(4) }
     categoria_id: { type: integer(4) }
     tipo_id: { type: integer(4) }
     responsable_id: { type: integer(4) }
@@ -64,7 +64,7 @@ Item:
     mensajeria_id: { type: integer(4) }
     guia: { type: string(255) }
     fecha_envio: { type: timestamp, default: null }
-    fecha_recepcion: { type: timestamp, defautl: null }
+    fecha_recepcion: { type: timestamp, default: null }
     permisionario: { type: string(255) }
     carroceria: { type: string(255) }    
     compra_directa: { type: string(255) }    
@@ -99,26 +99,26 @@ Item:
 
 Plaza:
   columns:
-    id: { type: integer(4), primary: true, autonumeric: true }
+    id: { type: integer(4), primary: true, autoincrement: true }
     nombre: { type: string(255) }
 
 CategoriaItem:
   columns:
-    id: { type: integer(4), primary: true, autonumeric: true }
+    id: { type: integer(4), primary: true, autoincrement: true }
     nombre: { type: string(255) }
 
 Tipo:
   columns:
-    id: { type: integer(4), primary: true, autonumeric: true }
+    id: { type: integer(4), primary: true, autoincrement: true }
     nombre: { type: string(255) }
 
 Impresor:
   columns:
-    id: { type: integer(4), primary: true, autonumeric: true }
+    id: { type: integer(4), primary: true, autoincrement: true }
     nombre: { type: string(255) }
 
 Mensajeria:
   columns:
-    id: { type: integer(4), primary: true, autonumeric: true }
+    id: { type: integer(4), primary: true, autoincrement: true }
     nombre: { type: string(255) }
 

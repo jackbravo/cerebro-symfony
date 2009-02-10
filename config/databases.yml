@@ -1,21 +1,18 @@
 dev:
-  propel:
+  doctrine:
     param:
-      classname:  DebugPDO
 
 test:
-  propel:
+  doctrine:
     param:
-      classname:  DebugPDO
 
 all:
-  propel:
-    class:        sfPropelDatabase
+  doctrine:
+    class:        sfDoctrineDatabase
     param:
-      classname:  PropelPDO
       dsn:        mysql:dbname=cerebro;host=localhost
-      username:   root
-      password:   
+      username:   cerebro_user
+      password:   cerebro_pwd
       encoding:   utf8
       persistent: true
       pooling:    true
