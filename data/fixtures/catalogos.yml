@@ -1,0 +1,49 @@
+CategoriaCampaign:
+  cat_ruta:
+    nombre: Camiones de ruta
+  cat_btl:
+    nombre: BTL Promocionales
+
+CategoriaItem:
+  cat_urb:
+    nombre: URB
+
+Producto:
+  prod: 
+    nombre: Integrales o similares
+
+Specialty:
+  spec_1:
+    nombre: Volumetrico
+  spec_2:
+    nombre: Maqueta
+
+Plaza:
+  gdl:
+    nombre: GDL
+  df:
+    nombre: DF
+  mty:
+    nombre: MTY
+
+Tipo:
+  t_1:
+    nombre: Medallon 01
+  t_2:
+    nombre: Medallon 02
+  t_3:
+    nombre: Integral 01
+  t_4:
+    nombre: Integral 02
+  t_5:
+    nombre: Integral 03
+
+Impresor: 
+  imp_1:
+    nombre: CicPrint
+
+Mensajeria:
+  men_1:
+    nombre: FedEx
+  men_2:
+    nombre: DHL
