@@ -1,3 +1,17 @@
+categoria_campaign:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               CategoriaCampaign
+    module:              categoria_campaign
+    prefix_path:         categoria_campaign
+    column:              id
+    with_wildcard_routes: true
+
+campaign:
+  class: sfDoctrineRouteCollection
+  options:
+    model:  Campaign
+
 # default rules
 homepage:
   url:   /
