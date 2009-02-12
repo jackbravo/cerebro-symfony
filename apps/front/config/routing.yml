@@ -1,3 +1,66 @@
+mensajeria:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               Mensajeria
+    module:              mensajeria
+    prefix_path:         mensajeria
+    column:              id
+    with_wildcard_routes: true
+
+impresor:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               Impresor
+    module:              impresor
+    prefix_path:         impresor
+    column:              id
+    with_wildcard_routes: true
+
+tipo:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               Tipo
+    module:              tipo
+    prefix_path:         tipo
+    column:              id
+    with_wildcard_routes: true
+
+plaza:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               Plaza
+    module:              plaza
+    prefix_path:         plaza
+    column:              id
+    with_wildcard_routes: true
+
+categoria_item:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               CategoriaItem
+    module:              categoria_item
+    prefix_path:         categoria_item
+    column:              id
+    with_wildcard_routes: true
+
+specialty:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               Specialty
+    module:              specialty
+    prefix_path:         specialty
+    column:              id
+    with_wildcard_routes: true
+
+producto:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               Producto
+    module:              producto
+    prefix_path:         producto
+    column:              id
+    with_wildcard_routes: true
+
 categoria_campaign:
   class: sfDoctrineRouteCollection
   options:
