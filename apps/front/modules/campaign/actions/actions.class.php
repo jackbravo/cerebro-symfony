@@ -12,7 +12,11 @@ class campaignActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->campaign_list = $this->getRoute()->getObjects();
+ //   $this->campaign_list = $this->getRoute()->getObjects();
+   $q = Doctrine_Query::create()
+     ->from('Campaign c')
+     ->where('c.activa=true');
+     $this->campaign_list = $q->execute();
   }
 
   public function executeShow(sfWebRequest $request)
