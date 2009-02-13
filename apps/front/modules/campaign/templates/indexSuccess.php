@@ -1,29 +1,29 @@
-<h1>Campaign List</h1>
+<h1>Listado de campañas</h1>
 
-<table>
+<table id="box-table-a" summary="Listado de campañas">
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-      <th>Vendedor</th>
-      <th>Categoria</th>
-      <th>Producto</th>
-      <th>Specialty</th>
-      <th>Cliente</th>
-      <th>Orden</th>
-      <th>Facturacion</th>
-      <th>Fecha inicio</th>
-      <th>Fecha cierre</th>
-      <th>Activa</th>
-      <th>Fecha ingreso</th>
-      <th>Fecha actualizacion</th>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Vendedor</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Producto</th>
+      <th scope="col">Specialty</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Orden</th>
+      <th scope="col">Facturacion</th>
+      <th scope="col">Fecha inicio</th>
+      <th scope="col">Fecha cierre</th>
+      <th scope="col">Activa</th>
+      <th scope="col">Fecha ingreso</th>
+      <th scope="col">Fecha actualizacion</th>
     </tr>
   </thead>
   <tbody>
     <?php foreach ($campaign_list as $campaign): ?>
     <tr>
-      <td><a href="<?php echo url_for('campaign_show', $campaign) ?>"><?php echo $campaign->getid() ?></a></td>
-      <td><?php echo $campaign->getnombre() ?></td>
+      <td><?php echo $campaign->getid() ?></td>
+      <td><a href="<?php echo url_for('campaign_show', $campaign) ?>"><?php echo $campaign->getnombre() ?></a></td>
       <td><?php echo $campaign->getvendedor_id() ?></td>
       <td><?php echo $campaign->getcategoria_id() ?></td>
       <td><?php echo $campaign->getproducto_id() ?></td>
@@ -40,5 +40,9 @@
     <?php endforeach; ?>
   </tbody>
 </table>
-
+<div class="menu">
   <a href="<?php echo url_for('campaign_new') ?>">New</a>
+  <a href="<?php echo url_for('campaign_new') ?>">New</a>
+  <a href="<?php echo url_for('campaign_new') ?>">New</a>
+  <a href="<?php echo url_for('campaign_new') ?>">New</a>
+</div>
