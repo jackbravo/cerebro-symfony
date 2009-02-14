@@ -1,3 +1,5 @@
+<h1><?php echo $campaign->getnombre()?> - detalles</h1>
+</br>
 <table>
   <tbody>
     <tr>
