@@ -55,6 +55,10 @@
       <td><?php echo $campaign->getfecha_ingreso() ?></td>
     </tr>
     <tr>
+      <th>Duración:</th>
+      <td><?php echo "Duración" ?></td>
+    </tr>
+    <tr>
       <th>Fecha actualizacion:</th>
       <td><?php echo $campaign->getfecha_actualizacion() ?></td>
     </tr>
