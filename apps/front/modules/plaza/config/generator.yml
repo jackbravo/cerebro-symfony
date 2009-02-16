@@ -13,7 +13,8 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
+      list:
+        title: Plazas
       filter:  ~
       form:    ~
       edit:    ~
