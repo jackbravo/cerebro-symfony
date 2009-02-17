@@ -7,11 +7,11 @@
       <tr>
         <td colspan="2">
           <?php echo $form->renderHiddenFields() ?>
-          &nbsp;<a href="<?php echo url_for('campaign') ?>">Cancel</a>
+          &nbsp;<a href="<?php echo url_for('campaign') ?>">Cancelar</a>
           <?php if (!$form->getObject()->isNew()): ?>
-            &nbsp;<?php echo link_to('Delete', 'campaign_delete', $form->getObject(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
+            &nbsp;<?php echo link_to('Delete', 'campaign_delete', $form->getObject(), array('method' => 'delete', 'confirm' => '¿Estás seguro que quieres borrar?')) ?>
           <?php endif; ?>
-          <input type="submit" value="Save" />
+          <input type="submit" value="Guardar" />
         </td>
       </tr>
     </tfoot>
@@ -92,20 +92,6 @@
         <td>
           <?php echo $form['activa']->renderError() ?>
           <?php echo $form['activa'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['fecha_ingreso']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['fecha_ingreso']->renderError() ?>
-          <?php echo $form['fecha_ingreso'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['fecha_actualizacion']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['fecha_actualizacion']->renderError() ?>
-          <?php echo $form['fecha_actualizacion'] ?>
         </td>
       </tr>
     </tbody>

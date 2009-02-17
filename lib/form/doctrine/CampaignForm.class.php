@@ -11,5 +11,14 @@ class CampaignForm extends BaseCampaignForm
 {
   public function configure()
   {
+    unset($this['fecha_ingreso'], $this['fecha_actualizacion']);
+
+    $this->widgetSchema->setLabels(array(
+      'categoria_id' => 'Categoria',
+      'vendedor_id' => 'Vendedor',
+      'producto_id' => 'Producto',
+      'specialty_id' => 'Specialty',
+      'orden' => 'No. de orden',
+    ));
   }
 }
