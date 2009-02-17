@@ -5,5 +5,7 @@
  */
 class Tipo extends BaseTipo
 {
-
+  public function __toString(){
+    return $this->nombre;
+  }
 }

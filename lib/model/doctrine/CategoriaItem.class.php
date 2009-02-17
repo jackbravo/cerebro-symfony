@@ -5,5 +5,7 @@
  */
 class CategoriaItem extends BaseCategoriaItem
 {
-
+  public function __toString(){
+    return $this->nombre;
+  }
 }
