@@ -5,5 +5,8 @@
  */
 class Specialty extends BaseSpecialty
 {
+  public function __toString(){
+    return $this->nombre;
+  }
 
 }
