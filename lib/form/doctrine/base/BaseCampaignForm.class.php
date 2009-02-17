@@ -14,7 +14,7 @@ class BaseCampaignForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'                  => new sfWidgetFormInputHidden(),
       'nombre'              => new sfWidgetFormInput(),
-      'vendedor_id'         => new sfWidgetFormInput(),
+      'vendedor_id'         => new sfWidgetFormDoctrineSelect(array('model' => 'sfGuardUser', 'add_empty' => true)),
       'categoria_id'        => new sfWidgetFormDoctrineSelect(array('model' => 'CategoriaCampaign', 'add_empty' => true)),
       'producto_id'         => new sfWidgetFormDoctrineSelect(array('model' => 'Producto', 'add_empty' => true)),
       'specialty_id'        => new sfWidgetFormDoctrineSelect(array('model' => 'Specialty', 'add_empty' => true)),
@@ -31,7 +31,7 @@ class BaseCampaignForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'                  => new sfValidatorDoctrineChoice(array('model' => 'Campaign', 'column' => 'id', 'required' => false)),
       'nombre'              => new sfValidatorString(array('max_length' => 255)),
-      'vendedor_id'         => new sfValidatorInteger(array('required' => false)),
+      'vendedor_id'         => new sfValidatorDoctrineChoice(array('model' => 'sfGuardUser', 'required' => false)),
       'categoria_id'        => new sfValidatorDoctrineChoice(array('model' => 'CategoriaCampaign', 'required' => false)),
       'producto_id'         => new sfValidatorDoctrineChoice(array('model' => 'Producto', 'required' => false)),
       'specialty_id'        => new sfValidatorDoctrineChoice(array('model' => 'Specialty', 'required' => false)),

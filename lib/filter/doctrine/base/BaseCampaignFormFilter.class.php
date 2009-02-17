@@ -15,7 +15,7 @@ class BaseCampaignFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'nombre'              => new sfWidgetFormFilterInput(),
-      'vendedor_id'         => new sfWidgetFormFilterInput(),
+      'vendedor_id'         => new sfWidgetFormDoctrineChoice(array('model' => 'sfGuardUser', 'add_empty' => true)),
       'categoria_id'        => new sfWidgetFormDoctrineChoice(array('model' => 'CategoriaCampaign', 'add_empty' => true)),
       'producto_id'         => new sfWidgetFormDoctrineChoice(array('model' => 'Producto', 'add_empty' => true)),
       'specialty_id'        => new sfWidgetFormDoctrineChoice(array('model' => 'Specialty', 'add_empty' => true)),
@@ -31,7 +31,7 @@ class BaseCampaignFormFilter extends BaseFormFilterDoctrine
 
     $this->setValidators(array(
       'nombre'              => new sfValidatorPass(array('required' => false)),
-      'vendedor_id'         => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'vendedor_id'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'sfGuardUser', 'column' => 'id')),
       'categoria_id'        => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'CategoriaCampaign', 'column' => 'id')),
       'producto_id'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'Producto', 'column' => 'id')),
       'specialty_id'        => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'Specialty', 'column' => 'id')),
@@ -62,7 +62,7 @@ class BaseCampaignFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'                  => 'Number',
       'nombre'              => 'Text',
-      'vendedor_id'         => 'Number',
+      'vendedor_id'         => 'ForeignKey',
       'categoria_id'        => 'ForeignKey',
       'producto_id'         => 'ForeignKey',
       'specialty_id'        => 'ForeignKey',

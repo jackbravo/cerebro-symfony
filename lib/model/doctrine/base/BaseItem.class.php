@@ -49,6 +49,9 @@ abstract class BaseItem extends sfDoctrineRecord
     $this->hasOne('Mensajeria', array('local' => 'mensajeria_id',
                                       'foreign' => 'id'));
 
+    $this->hasOne('sfGuardUser as Responsable', array('local' => 'responsable_id',
+                                                      'foreign' => 'id'));
+
     $timestampable0 = new Doctrine_Template_Timestampable(array('created' => array('disabled' => true), 'updated' => array('name' => 'fecha_actualizacion')));
     $this->actAs($timestampable0);
   }

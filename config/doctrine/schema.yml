@@ -30,6 +30,11 @@ Campaign:
       local: specialty_id
       foreign: id
       foreignAlias: Campaigns
+    Vendedor:
+      class: sfGuardUser
+      local: vendedor_id
+      foreign: id
+      foreignAlias: Campaigns
 
 CategoriaCampaign:
   columns:
@@ -94,6 +99,11 @@ Item:
       foreignAlias: Items
     Mensajeria:
       local: mensajeria_id
+      foreign: id
+      foreignAlias: Items
+    Responsable:
+      class: sfGuardUser
+      local: responsable_id
       foreign: id
       foreignAlias: Items
 
