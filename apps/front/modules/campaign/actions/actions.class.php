@@ -38,6 +38,15 @@ class campaignActions extends sfActions
     $this->setTemplate('new');
   }
 
+  public function executeAddItems(sfWebRequest $request)
+  {
+    $this->campaign = $this->getRoute()->getObject();
+  }
+
+  public function executeCreateItems(sfWebRequest $request)
+  {
+  }
+
   public function executeEdit(sfWebRequest $request)
   {
     $this->form = new CampaignForm($this->getRoute()->getObject());
@@ -66,9 +75,14 @@ class campaignActions extends sfActions
     $form->bind($request->getParameter($form->getName()));
     if ($form->isValid())
     {
-      $campaign = $form->save();
+      $is_new = $form->isNew(); //Valida si la forma es nueva (viene de ser creada) o si viene de ser editada una ya existente
+      $campaign = $form->save(); //Guarda el obejto en la base de datos.
 
-      $this->redirect('@campaign_edit?id='.$campaign['id']);
+      if ($is_new) {
+        $this->redirect('@campaign_addItems?id='.$campaign['id']); // Si la forma fué nueva, la manda a agregarle sus items
+      } else {
+        $this->redirect('@campaign_show?id='.$campaign['id']); // Si la forma no es nueva, la manda a su show, una vez editada.
+      }
     }
   }
 }
