@@ -40,5 +40,5 @@
 </table>
 <div class="menu">
   <a href="<?php echo url_for('campaign_new') ?>">Agregar campaña</a>
-  <a href="<?php echo url_for('campaign') ?>">Administrar sistema</a>
+  <a href="<?php echo url_for('/admin') ?>">Administrar sistema</a> 
 </div>

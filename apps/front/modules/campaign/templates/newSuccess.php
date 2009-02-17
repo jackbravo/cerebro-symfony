@@ -1,3 +1,3 @@
-<h1>New Campaign</h1>
+<h1>Nueva campaña</h1>
 
 <?php include_partial('form', array('form' => $form)) ?>

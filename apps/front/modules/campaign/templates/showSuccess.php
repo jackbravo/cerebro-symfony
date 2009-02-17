@@ -65,8 +65,6 @@
   </tbody>
 </table>
 
-<hr />
-
-<a href="<?php echo url_for('campaign_edit', $campaign) ?>">Edit</a>
+<a href="<?php echo url_for('campaign_edit', $campaign) ?>">Editar</a>
 &nbsp;
-<a href="<?php echo url_for('campaign') ?>">List</a>
+<a href="<?php echo url_for('campaign') ?>">Volver al listado de campañas</a>
