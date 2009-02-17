@@ -19,6 +19,7 @@ class CampaignForm extends BaseCampaignForm
       'producto_id' => 'Producto',
       'specialty_id' => 'Specialty',
       'orden' => 'No. de orden',
+      'facturacion' => 'Facturación MXN:',
     ));
   }
 }
