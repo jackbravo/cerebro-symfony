@@ -58,6 +58,7 @@ Item:
       updated: { name: fecha_actualizacion }
   columns:
     id: { type: integer(4), primary: true, autoincrement: true }
+    campaign_id: { type: integer(4) }
     plaza_id: { type: integer(4) }
     categoria_id: { type: integer(4) }
     tipo_id: { type: integer(4) }
@@ -80,6 +81,10 @@ Item:
     desmontaje: { type: timestamp, default: null }
     evidencia: { type: boolean }
   relations:
+    Campaign:
+      local: campaign_id
+      foreign: id
+      foreignAlias: Items
     Plaza:
       local: plaza_id
       foreign: id

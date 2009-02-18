@@ -9,6 +9,7 @@ abstract class BaseItem extends sfDoctrineRecord
   {
     $this->setTableName('item');
     $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'primary' => true, 'autoincrement' => true, 'length' => '4'));
+    $this->hasColumn('campaign_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
     $this->hasColumn('plaza_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
     $this->hasColumn('categoria_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
     $this->hasColumn('tipo_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
@@ -34,6 +35,9 @@ abstract class BaseItem extends sfDoctrineRecord
 
   public function setUp()
   {
+    $this->hasOne('Campaign', array('local' => 'campaign_id',
+                                    'foreign' => 'id'));
+
     $this->hasOne('Plaza', array('local' => 'plaza_id',
                                  'foreign' => 'id'));
 

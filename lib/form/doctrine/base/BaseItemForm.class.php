@@ -13,6 +13,7 @@ class BaseItemForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'                  => new sfWidgetFormInputHidden(),
+      'campaign_id'         => new sfWidgetFormDoctrineSelect(array('model' => 'Campaign', 'add_empty' => true)),
       'plaza_id'            => new sfWidgetFormDoctrineSelect(array('model' => 'Plaza', 'add_empty' => true)),
       'categoria_id'        => new sfWidgetFormDoctrineSelect(array('model' => 'CategoriaItem', 'add_empty' => true)),
       'tipo_id'             => new sfWidgetFormDoctrineSelect(array('model' => 'Tipo', 'add_empty' => true)),
@@ -39,6 +40,7 @@ class BaseItemForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'                  => new sfValidatorDoctrineChoice(array('model' => 'Item', 'column' => 'id', 'required' => false)),
+      'campaign_id'         => new sfValidatorDoctrineChoice(array('model' => 'Campaign', 'required' => false)),
       'plaza_id'            => new sfValidatorDoctrineChoice(array('model' => 'Plaza', 'required' => false)),
       'categoria_id'        => new sfValidatorDoctrineChoice(array('model' => 'CategoriaItem', 'required' => false)),
       'tipo_id'             => new sfValidatorDoctrineChoice(array('model' => 'Tipo', 'required' => false)),

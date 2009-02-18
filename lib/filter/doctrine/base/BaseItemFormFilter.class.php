@@ -14,6 +14,7 @@ class BaseItemFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
+      'campaign_id'         => new sfWidgetFormDoctrineChoice(array('model' => 'Campaign', 'add_empty' => true)),
       'plaza_id'            => new sfWidgetFormDoctrineChoice(array('model' => 'Plaza', 'add_empty' => true)),
       'categoria_id'        => new sfWidgetFormDoctrineChoice(array('model' => 'CategoriaItem', 'add_empty' => true)),
       'tipo_id'             => new sfWidgetFormDoctrineChoice(array('model' => 'Tipo', 'add_empty' => true)),
@@ -39,6 +40,7 @@ class BaseItemFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
+      'campaign_id'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'Campaign', 'column' => 'id')),
       'plaza_id'            => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'Plaza', 'column' => 'id')),
       'categoria_id'        => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'CategoriaItem', 'column' => 'id')),
       'tipo_id'             => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'Tipo', 'column' => 'id')),
@@ -79,6 +81,7 @@ class BaseItemFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'                  => 'Number',
+      'campaign_id'         => 'ForeignKey',
       'plaza_id'            => 'ForeignKey',
       'categoria_id'        => 'ForeignKey',
       'tipo_id'             => 'ForeignKey',

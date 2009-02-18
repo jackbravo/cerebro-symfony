@@ -36,6 +36,9 @@ abstract class BaseCampaign extends sfDoctrineRecord
     $this->hasOne('sfGuardUser as Vendedor', array('local' => 'vendedor_id',
                                                    'foreign' => 'id'));
 
+    $this->hasMany('Item as Items', array('local' => 'id',
+                                          'foreign' => 'campaign_id'));
+
     $timestampable0 = new Doctrine_Template_Timestampable(array('created' => array('name' => 'fecha_ingreso'), 'updated' => array('name' => 'fecha_actualizacion')));
     $this->actAs($timestampable0);
   }
