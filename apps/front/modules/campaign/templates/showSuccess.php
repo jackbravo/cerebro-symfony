@@ -12,19 +12,19 @@
     </tr>
     <tr>
       <th>Vendedor:</th>
-      <td><?php echo $campaign->getvendedor_id() ?></td>
+      <td><?php echo $campaign->Vendedor ?></td>
     </tr>
     <tr>
       <th>Categoria:</th>
-      <td><?php echo $campaign->getcategoria_id() ?></td>
+      <td><?php echo $campaign->Categoria ?></td>
     </tr>
     <tr>
       <th>Producto:</th>
-      <td><?php echo $campaign->getproducto_id() ?></td>
+      <td><?php echo $campaign->Producto ?></td>
     </tr>
     <tr>
       <th>Specialty:</th>
-      <td><?php echo $campaign->getspecialty_id() ?></td>
+      <td><?php echo $campaign->Specialty ?></td>
     </tr>
     <tr>
       <th>Cliente:</th>
@@ -65,6 +65,12 @@
   </tbody>
 </table>
 
-<a href="<?php echo url_for('campaign_edit', $campaign) ?>">Editar</a>
+<?php foreach ($campaign->Items as $item): ?>
+
+<?php endforeach; ?>
+
+<a href="<?php echo url_for('campaign_edit', $campaign) ?>">Editar datos de campaña</a>
+&nbsp;
+<a href="<?php echo url_for('campaign_addItems', $campaign) ?>">Agregar items</a>
 &nbsp;
 <a href="<?php echo url_for('campaign') ?>">Volver al listado de campañas</a>

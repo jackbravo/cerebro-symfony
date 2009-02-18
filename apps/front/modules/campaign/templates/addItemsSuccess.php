@@ -14,15 +14,16 @@ $(document).ready(function(){
     }
     else{
       //$('tbody.table_body').after($(poner_extra));
-      $(poner_extra).appendTo($('tbody.table_body'));
+      poner_extra.clone(true).appendTo($('tbody.table_body'));
     }
     return false;//agrego el clone de este mismo elemento, el true es para que también me clone (copie) todos sus events.
     });
 
 });
 </script>
-<h2>Agregar items a: <?php echo $campaign->nombre ?></h2>
+<h2>Agregar items a campaña: <?php echo $campaign->nombre ?></h2>
 <form action="<?php echo url_for('campaign_createItems', $campaign) ?>" method="post">
+<a href="#" class="item_add">Agregar otro item</a>
 <table>
   <thead>
     <tr>
@@ -36,20 +37,20 @@ $(document).ready(function(){
   </thead>
   <tbody class="table_body">
     <tr class="item_row">
-      <td><?php echo select_tag('plaza_id[]', objects_for_select(
+      <td><?php echo select_tag('items[plaza_id][]', objects_for_select(
                   Doctrine::getTable('Plaza')->findAll(),
                   'getId', '__toString', '')
                 ) ?></td>
-      <td><input type="text" name="no_items[]" size="10" /></td>
+      <td><input type="text" name="items[no_items][]" size="10" /></td>
       <td><?php echo select_tag('categoria_id[]', objects_for_select(
                   Doctrine::getTable('CategoriaItem')->findAll(),
                   'getId', '__toString', '')
                 ) ?></td>
-      <td><?php echo select_tag('tipo_id[]', objects_for_select(
+      <td><?php echo select_tag('items[tipo_id][]', objects_for_select(
                   Doctrine::getTable('Tipo')->findAll(),
                   'getId', '__toString', '')
                 ) ?></td>
-      <td><?php echo select_tag('responsable_id[]', objects_for_select(
+      <td><?php echo select_tag('items[responsable_id][]', objects_for_select(
                   Doctrine::getTable('sfGuardUser')->findAll(),
                   'getId', '__toString', '')
                 ) ?></td>
@@ -57,5 +58,9 @@ $(document).ready(function(){
     </tr>
   </tbody>
 </table>
-<a href="#" class="item_add">Agregar otro</a>
+<a href="#" class="item_add">Agregar otro item</a>
+&nbsp;
+<a href="<?php echo url_for('campaign_show', $campaign)?>">Cancelar</a>
+<br />
+<input type="submit" value="Guardar" name="submit"/>
 </form>
