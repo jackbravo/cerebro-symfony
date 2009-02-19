@@ -5,56 +5,42 @@
     <tr>
       <th>Id:</th>
       <td><?php echo $campaign->getid() ?></td>
-    </tr>
-    <tr>
       <th>Nombre:</th>
       <td><?php echo $campaign->getnombre() ?></td>
     </tr>
     <tr>
       <th>Vendedor:</th>
       <td><?php echo $campaign->Vendedor ?></td>
-    </tr>
-    <tr>
       <th>Categoria:</th>
       <td><?php echo $campaign->Categoria ?></td>
     </tr>
     <tr>
       <th>Producto:</th>
       <td><?php echo $campaign->Producto ?></td>
-    </tr>
-    <tr>
       <th>Specialty:</th>
       <td><?php echo $campaign->Specialty ?></td>
     </tr>
     <tr>
       <th>Cliente:</th>
       <td><?php echo $campaign->getcliente() ?></td>
-    </tr>
-    <tr>
       <th>Orden:</th>
       <td><?php echo $campaign->getorden() ?></td>
     </tr>
     <tr>
       <th>Facturacion:</th>
       <td><?php echo $campaign->getfacturacion() ?></td>
-    </tr>
-    <tr>
       <th>Fecha inicio:</th>
       <td><?php echo $campaign->getfecha_inicio() ?></td>
     </tr>
     <tr>
       <th>Fecha cierre:</th>
       <td><?php echo $campaign->getfecha_cierre() ?></td>
-    </tr>
-    <tr>
       <th>Activa:</th>
       <td><?php echo $campaign->getactiva() ?></td>
     </tr>
     <tr>
       <th>Fecha ingreso:</th>
       <td><?php echo $campaign->getfecha_ingreso() ?></td>
-    </tr>
-    <tr>
       <th>Duración:</th>
       <td><?php echo "Duración" ?></td>
     </tr>
