@@ -48,20 +48,23 @@ class campaignActions extends sfActions
     $campaign_id = $request->getParameter('id');
     $items = $request->getParameter('items');
 
-    //echo "<pre>";
-    //print_r($items);
-    //exit;
     $item_collection = new Doctrine_Collection('Item');
     foreach ($items['plaza_id'] as $key => $value)
     {
-      $item = new Item();
-      $item->plaza_id = $items['plaza_id'][$key];
-      $item->no_items = $items['no_items'][$key];
-      $item->tipo_id = $items['tipo_id'][$key];
-      $item->responsable_id = $items['responsable_id'][$key];
-      $item->campaign_id = $campaign_id;
-      $item_collection->add($item);
+      for ($i = 0; $i < $items['no_items'][$key]; $i++){
+        $item = new Item();
+        $item->plaza_id = $items['plaza_id'][$key];
+        $item->categoria_id = $items['categoria_id'][$key];
+        $item->tipo_id = $items['tipo_id'][$key];
+        $item->responsable_id = $items['responsable_id'][$key];
+        $item->campaign_id = $campaign_id;
+        $item_collection->add($item);
+      }
     }
+
+    //echo "<pre>";
+    //print_r($item_collection->toArray());
+    //exit;
 
     $item_collection->save();
     $this->redirect('@campaign_show?id='.$campaign_id);
