@@ -42,7 +42,7 @@ $(document).ready(function(){
                   'getId', '__toString', '')
                 ) ?></td>
       <td><input type="text" name="items[no_items][]" size="10" /></td>
-      <td><?php echo select_tag('categoria_id[]', objects_for_select(
+      <td><?php echo select_tag('items[categoria_id][]', objects_for_select(
                   Doctrine::getTable('CategoriaItem')->findAll(),
                   'getId', '__toString', '')
                 ) ?></td>
