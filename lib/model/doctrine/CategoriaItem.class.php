@@ -6,6 +6,6 @@
 class CategoriaItem extends BaseCategoriaItem
 {
   public function __toString(){
-    return $this->nombre;
+    return $this->nombre ? $this->nombre : ''; //se cumple la pregunta? si : no 
   }
 }

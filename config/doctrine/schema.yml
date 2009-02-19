@@ -79,7 +79,7 @@ Item:
     economico: { type: string(255) }
     instalacion: { type: timestamp, default: null }
     desmontaje: { type: timestamp, default: null }
-    evidencia: { type: boolean }
+    evidencia: { type: boolean, default: false }
   relations:
     Campaign:
       local: campaign_id
