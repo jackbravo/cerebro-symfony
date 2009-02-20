@@ -1,12 +1,12 @@
-<h1><?php echo $campaign->getnombre()?> - detalles</h1>
+<h1>Campaña: <?php echo $campaign->getnombre()?></h1>
 </br>
 <table>
   <tbody>
     <tr>
+      <th>Fecha ingreso:</th>
+      <td><?php echo $campaign->getfecha_ingreso() ?></td>
       <th>Id:</th>
       <td><?php echo $campaign->getid() ?></td>
-      <th>Nombre:</th>
-      <td><?php echo $campaign->getnombre() ?></td>
     </tr>
     <tr>
       <th>Vendedor:</th>
@@ -23,26 +23,29 @@
     <tr>
       <th>Cliente:</th>
       <td><?php echo $campaign->getcliente() ?></td>
-      <th>Orden:</th>
+      <th>Orden de compra:</th>
       <td><?php echo $campaign->getorden() ?></td>
     </tr>
     <tr>
-      <th>Facturacion:</th>
-      <td><?php echo $campaign->getfacturacion() ?></td>
+      <th>Duración:</th>
+      <?php 
+       $day = $campaign->getDuracion(); //esta función está en l/m/d/Campaign.class.php
+       $day/=86400;
+       $wk = round(($day/7),1);
+      ?>
+      <td><?php echo $day." días "."<br />".$wk." semanas" ?></td>
       <th>Fecha inicio:</th>
       <td><?php echo $campaign->getfecha_inicio() ?></td>
     </tr>
     <tr>
-      <th>Fecha cierre:</th>
+      <th>Fecha de cierre:</th>
       <td><?php echo $campaign->getfecha_cierre() ?></td>
       <th>Activa:</th>
       <td><?php echo $campaign->getactiva() ?></td>
     </tr>
     <tr>
-      <th>Fecha ingreso:</th>
-      <td><?php echo $campaign->getfecha_ingreso() ?></td>
-      <th>Duración:</th>
-      <td><?php echo "Duración" ?></td>
+      <th>Facturación:</th>
+      <td><?php echo $campaign->getfacturacion() ?></td>
     </tr>
     <tr>
       <th>Fecha actualizacion:</th>
@@ -54,6 +57,7 @@
   <table>
     <thead>
       <tr>
+        <th>Id item</th>
         <th>Último acceso</th>
         <th>Plaza</th>
         <th>Categoria</th>
@@ -81,6 +85,7 @@
     <tbody>
       <?php foreach ($campaign->Items as $item): ?>
       <tr>
+        <td title="Id del ítem"><?php echo $item->id ?></td>
         <td title="Última actualización"><?php echo $item->fecha_actualizacion ?></td>
         <td title="Plaza"><?php echo $item->Plaza ?></td>
         <td title="Categoría"><?php echo $item->Categoria ?></td>

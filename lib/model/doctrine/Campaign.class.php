@@ -5,5 +5,8 @@
  */
 class Campaign extends BaseCampaign
 {
-
+  public function getDuracion(){ //devuelve la cantidad de segundos que dura una campaña
+    $diff= (strtotime($this->fecha_cierre))-(strtotime($this->fecha_inicio));
+    return $diff;
+  }
 }
