@@ -14,32 +14,32 @@
       <th scope="col">Duracion</th>
       <th scope="col">Fecha inicio</th>
       <th scope="col">Fecha cierre</th>
-      <th scope="">Activa</th>
+      <th scope="col">Activa</th>
       <th scope="col">Fecha ingreso</th>
     </tr>
   </thead>
   <tbody>
     <?php foreach ($campaign_list as $campaign): ?>
     <tr>
-      <td><a href="<?php echo url_for('campaign_show', $campaign) ?>"><?php echo $campaign->getnombre() ?></a></td>
-      <td><?php echo $campaign->getVendedor() ?></td>
-      <td><?php echo $campaign->getCategoria() ?></td>
-      <td><?php echo $campaign->getProducto() ?></td>
-      <td><?php echo $campaign->getSpecialty() ?></td>
-      <td><?php echo $campaign->getCliente() ?></td>
-      <td><?php echo $campaign->getOrden() ?></td>
-      <td><?php echo $campaign->getFacturacion() ?></td>
-      <td><?php echo round($campaign->getDuracion()/86400,1) ." días"?></td>
-      <td><?php echo $campaign->getfecha_inicio() ?></td>
-      <td><?php echo $campaign->getfecha_cierre() ?></td>
-      <td><?php echo $campaign->getactiva() ?></td>
-      <td><?php echo $campaign->getfecha_ingreso() ?></td>
+      <td title="Nombre"><a href="<?php echo url_for('campaign_show', $campaign) ?>"><?php echo $campaign->getnombre() ?></a></td>
+      <td title="Vendedor"><?php echo $campaign->getVendedor() ?></td>
+      <td title="Categoría"><?php echo $campaign->getCategoria() ?></td>
+      <td title="Producto"><?php echo $campaign->getProducto() ?></td>
+      <td title="Specialty"><?php echo $campaign->getSpecialty() ?></td>
+      <td title="Cliente"><?php echo $campaign->getCliente() ?></td>
+      <td title="No. de orden"><?php echo $campaign->getOrden() ?></td>
+      <td title="Facturación"><?php echo $campaign->getFacturacion() ?></td>
+      <td title="Duración"><?php echo round($campaign->getDuracion()/86400,1) ." días"?></td>
+      <td title="Inicio"><?php echo $campaign->getfecha_inicio() ?></td>
+      <td title="Cierre"><?php echo $campaign->getfecha_cierre() ?></td>
+      <td title="¿Es activa?"><?php echo $campaign->getactiva() ?></td>
+      <td title="Fecha de ingreso"><?php echo $campaign->getfecha_ingreso() ?></td>
     </tr>
     <tr>
       <th>Responsable</th>
       <th>Cantidad</th>
-      <th>Instaladas</th>
-      <th>Desmontadas</th>
+      <th>Instalados</th>
+      <th>Desmontados</th>
     </tr>
       <?php foreach(Doctrine::getTable('Campaign')->getItemResume($campaign->id) as $row): ?><?php /*Esta función yo la hice y está en l/m/d/CampaignTable.class.php*/?>   
       <tr>
