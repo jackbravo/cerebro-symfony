@@ -1,4 +1,4 @@
-html{color:#666666;}
+html{color:#fff;}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td
 {
     margin:0;padding:0;
@@ -95,7 +95,7 @@ a:hover
 body
 {
   font: 14px "Lucida Grande", Lucida, Verdana, sans-serif;
-  background-color: #efefef;
+  background-color: #fff;
 }
 
 #container
@@ -513,13 +513,5 @@ em
 	border-right: 1px solid #aabcfe;
 	border-left: 1px solid #aabcfe;
 	color: #669;
-}
-.menu
-{
-    width: 80%;
-    max-width: 1100px;
-    margin:auto;
-    text-align:right;
-    padding: 10px 0px;
 }
 
