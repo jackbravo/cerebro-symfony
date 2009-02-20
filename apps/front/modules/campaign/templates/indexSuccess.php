@@ -22,23 +22,41 @@
     <?php foreach ($campaign_list as $campaign): ?>
     <tr>
       <td><a href="<?php echo url_for('campaign_show', $campaign) ?>"><?php echo $campaign->getnombre() ?></a></td>
-      <td><?php echo $campaign->getvendedor_id() ?></td>
-      <td><?php echo $campaign->getcategoria_id() ?></td>
-      <td><?php echo $campaign->getproducto_id() ?></td>
-      <td><?php echo $campaign->getspecialty_id() ?></td>
-      <td><?php echo $campaign->getcliente() ?></td>
-      <td><?php echo $campaign->getorden() ?></td>
-      <td><?php echo $campaign->getfacturacion() ?></td>
-      <td><?php echo "Duración" ?></td>
+      <td><?php echo $campaign->getVendedor() ?></td>
+      <td><?php echo $campaign->getCategoria() ?></td>
+      <td><?php echo $campaign->getProducto() ?></td>
+      <td><?php echo $campaign->getSpecialty() ?></td>
+      <td><?php echo $campaign->getCliente() ?></td>
+      <td><?php echo $campaign->getOrden() ?></td>
+      <td><?php echo $campaign->getFacturacion() ?></td>
+      <td><?php echo round($campaign->getDuracion()/86400,1) ." días"?></td>
       <td><?php echo $campaign->getfecha_inicio() ?></td>
       <td><?php echo $campaign->getfecha_cierre() ?></td>
       <td><?php echo $campaign->getactiva() ?></td>
       <td><?php echo $campaign->getfecha_ingreso() ?></td>
     </tr>
+    <tr>
+      <th>Responsable</th>
+      <th>Cantidad</th>
+      <th>Instaladas</th>
+      <th>Desmontadas</th>
+    </tr>
+      <?php foreach(Doctrine::getTable('Campaign')->getItemResume($campaign->id) as $row): ?><?php /*Esta función yo la hice y está en l/m/d/CampaignTable.class.php*/?>   
+      <tr>
+        <td><?php echo $row['Responsable']?></td>
+        <td><?php echo $row['Total']?></td>
+        <td><?php echo $row['Instalados']?></td>
+        <td><?php echo $row['Desmontados']?></td>
+      </tr>
+      <?php endforeach; ?>
+    <tr>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
-<div class="menu">
   <a href="<?php echo url_for('campaign_new') ?>">Agregar campaña</a>
   <a href="<?php echo url_for('/admin') ?>">Administrar sistema</a> 
-</div>

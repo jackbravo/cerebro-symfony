@@ -4,5 +4,12 @@
  */
 class CampaignTable extends Doctrine_Table
 {
-
+  public function getItemResume($id)
+  {
+    $dbh = $this->getConnection(); // Tomar la conexion de PDO de esta tabla (PDO es la librería de base de datos de php)
+    $sql = "select r.username as 'Responsable', count(i.id) as 'Total', count(i.instalacion) as 'Instalados', count(i.desmontaje) as 'Desmontados' from item i inner join sf_guard_user r on r.id=i.responsable_id where i.campaign_id=? group by i.responsable_id"; // Escribo mi query 
+    $sth = $dbh->prepare($sql); //Prepara el query de arriba para evitar inyección de SQL
+    $sth->execute(array($id)); // Ejecuta el query y reemplaza el signo ? por lo que le manda en el arreglo
+    return $sth->fetchAll(PDO::FETCH_ASSOC); //devuelve el resultado y le dá a cada campo del array el nombre que establecí arriba
+  }
 }
