@@ -76,6 +76,10 @@ campaign:
     model:  Campaign
     object_actions: { addItems: get, createItems: post }
 
+item:
+  class: sfDoctrineRouteCollection
+  options:
+    model:  Item
 
 # default rules
 homepage:
