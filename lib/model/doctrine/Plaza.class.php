@@ -6,6 +6,6 @@
 class Plaza extends BasePlaza
 {
   public function __toString(){
-    return $this->nombre;
+    return $this->nombre ? $this->nombre: '';
   }
 }

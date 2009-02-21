@@ -1,4 +1,4 @@
-<h1>Listado de campañas</h1>
+<h1>Listado de campañas <?php echo $sf_user->getAttribute('campaign_activa', 1) == 1 ? 'activas' : 'inactivas' ;?></h1>
 
 <table id="box-table-a" summary="Listado de campañas">
   <thead>
@@ -29,7 +29,7 @@
       <td title="Cliente"><?php echo $campaign->getCliente() ?></td>
       <td title="No. de orden"><?php echo $campaign->getOrden() ?></td>
       <td title="Facturación"><?php echo $campaign->getFacturacion() ?></td>
-      <td title="Duración"><?php echo round($campaign->getDuracion()/86400,1) ." días"?></td>
+      <td title="Duración"><?php echo round($campaign->getDuracion()/86400,1) ." d<br/>".round(($campaign->getDuracion()/86400)/7,1)." w"?></td>
       <td title="Inicio"><?php echo $campaign->getfecha_inicio() ?></td>
       <td title="Cierre"><?php echo $campaign->getfecha_cierre() ?></td>
       <td title="¿Es activa?"><?php echo $campaign->getactiva() ?></td>
@@ -58,5 +58,8 @@
     <?php endforeach; ?>
   </tbody>
 </table>
-  <a href="<?php echo url_for('campaign_new') ?>">Agregar campaña</a>
-  <a href="<?php echo url_for('/admin') ?>">Administrar sistema</a> 
+  <a href="<?php echo url_for('campaign_new') ?>">Agregar campaña</a>&nbsp;
+  <a href="<?php echo url_for('/admin') ?>">Administrar sistema</a>&nbsp;
+  <?php echo link_to('Activas', 'campaign', array('activa' => 1)); ?>&nbsp;
+  <a href="<?php echo url_for('campaign', array('activa' => 0)) ?>">Inactivas</a> 
+  

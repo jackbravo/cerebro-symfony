@@ -5,5 +5,8 @@
  */
 class Mensajeria extends BaseMensajeria
 {
+  public function __toString(){
+    return $this->nombre ? $this->nombre: '';
+  }
 
 }

@@ -9,7 +9,7 @@
           <?php echo $form->renderHiddenFields() ?>
           &nbsp;<a href="<?php echo url_for('campaign') ?>">Cancelar</a>
           <?php if (!$form->getObject()->isNew()): ?>
-            &nbsp;<?php echo link_to('Delete', 'campaign_delete', $form->getObject(), array('method' => 'delete', 'confirm' => '¿Estás seguro que quieres borrar?')) ?>
+            &nbsp;<?php echo link_to('Borrar', 'campaign_delete', $form->getObject(), array('method' => 'delete', 'confirm' => '¿Estás seguro que quieres borrar?')) ?>
           <?php endif; ?>
           <input type="submit" value="Guardar" />
         </td>

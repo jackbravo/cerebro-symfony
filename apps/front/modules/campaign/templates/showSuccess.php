@@ -53,12 +53,12 @@
     </tr>
   </tbody>
 </table>
-
+<h1>Items</h1>
   <table>
     <thead>
       <tr>
         <th>Id item</th>
-        <th>Último acceso</th>
+        <th>Última actualización</th>
         <th>Plaza</th>
         <th>Categoria</th>
         <th>Tipo</th>
@@ -83,11 +83,11 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($campaign->Items as $item): ?>
+      <?php foreach ($campaign->getItems() as $item): ?> <?php //reemplazar esto por algo así como $campaign->getItems as $items o algo así...?>
       <tr>
-        <td title="Id del ítem"><?php echo $item->id ?></td>
-        <td title="Última actualización"><?php echo $item->fecha_actualizacion ?></td>
-        <td title="Plaza"><?php echo $item->Plaza ?></td>
+        <td title="Id del ítem"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->id ?></a></td>
+        <td title="Última actualización"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->fecha_actualizacion ?></a></td>
+        <td title="Plaza"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->Plaza ?></a></td>
         <td title="Categoría"><?php echo $item->Categoria ?></td>
         <td title="Tipo"><?php echo $item->Tipo ?></td>
         <td title="Responsable"><?php echo $item->Responsable ?></td>
@@ -107,7 +107,7 @@
         <td title="Número económico"><?php echo $item->economico ?></td>
         <td title="Fecha de instalación"><?php echo $item->instalacion ?></td>
         <td title="Fecha de desmontaje"><?php echo $item->desmontaje ?></td>
-        <td title="¿Existe evidencia de la instalación?"><?php echo $item->evidencia ?></td>
+        <td title="¿Existe evidencia de la instalación?"><?php echo ($item->evidencia ? 'Sí' : 'No') ?></td>
       </tr>
       <?php endforeach; ?>
     </tbody>   
