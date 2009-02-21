@@ -9,4 +9,18 @@ class Campaign extends BaseCampaign
     $diff= (strtotime($this->fecha_cierre))-(strtotime($this->fecha_inicio));
     return $diff;
   }
+  public function getItems(){
+    $q = Doctrine_Query::create()
+      ->from('Item i')
+      ->leftJoin('i.Responsable r')
+      ->leftJoin('i.Plaza p')
+      ->leftJoin('i.Categoria c')
+      ->leftJoin('i.Tipo t')
+      ->leftJoin('i.Impresor imp')
+      ->leftJoin('i.Mensajeria m')
+      ->where('i.campaign_id=?')
+      ->orderBy('i.responsable_id');
+    return $q->execute(array($this->id));  // $query= $this->id // es mi Id de mi campaña, lo puedo usar para el query item.campaign_id = ?
+    
+  }
 }
