@@ -13,10 +13,15 @@ class campaignActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
  //   $this->campaign_list = $this->getRoute()->getObjects();
-   $q = Doctrine_Query::create()
-     ->from('Campaign c')
-     ->where('c.activa=true');
-     $this->campaign_list = $q->execute();
+ 
+     if ($request->hasParameter('activa')) {
+       $this->getUser()->setAttribute('campaign_activa', $request->getParameter('activa'));
+     }
+     $activa = $this->getUser()->getAttribute('campaign_activa', 1);
+     $q = Doctrine_Query::create()
+       ->from('Campaign c')
+       ->where('c.activa=?');
+     $this->campaign_list = $q->execute(array($activa));
   }
 
   public function executeShow(sfWebRequest $request)
