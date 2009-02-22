@@ -81,8 +81,10 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+  <?php if ($sf_user->hasCredential(array('admin'))): ?>
   <a href="<?php echo url_for('campaign_new') ?>">Agregar campaña</a>&nbsp;
   <a href="<?php echo url_for('/admin') ?>">Administrar sistema</a>&nbsp;
+  <?php endif; ?>
   <?php echo link_to('Activas', 'campaign', array('activa' => 1)); ?>&nbsp;
   <a href="<?php echo url_for('campaign', array('activa' => 0)) ?>">Inactivas</a> 
   

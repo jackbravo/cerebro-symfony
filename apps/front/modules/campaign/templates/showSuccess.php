@@ -43,10 +43,13 @@
       <th>Activa:</th>
       <td><?php echo $campaign->getactiva() ?></td>
     </tr>
+    <?php /*if ($sf_user->hasCredential(array('admin', 'comercial'), false)): */ //Esta notación es para cuando quieres revisar si tiene una u otra credencial?>
+    <?php if ($sf_user->hasCredential(array('admin'))): ?>
     <tr>
       <th>Facturación:</th>
       <td><?php echo $campaign->getfacturacion() ?></td>
     </tr>
+    <?php endif; ?>
     <tr>
       <th>Fecha actualizacion:</th>
       <td><?php echo $campaign->getfecha_actualizacion() ?></td>
@@ -83,7 +86,14 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($campaign->getItems() as $item): ?> <?php //reemplazar esto por algo así como $campaign->getItems as $items o algo así...?>
+      <?php 
+      if ($sf_user->hasCredential(array('admin', 'comercial'), false)) {
+        $items = $campaign->getItems();
+      }
+      else {
+        $items = $campaign->getItems($sf_user->getId());
+      }
+      foreach ($items as $item): ?> <?php //reemplazar esto por algo así como $campaign->getItems as $items o algo así...?>
       <tr>
         <td title="Id del ítem"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->id ?></a></td>
         <td title="Última actualización"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->fecha_actualizacion ?></a></td>
@@ -113,8 +123,8 @@
     </tbody>   
   </table>
 
-<a href="<?php echo url_for('campaign_edit', $campaign) ?>">Editar datos de campaña</a>
-&nbsp;
-<a href="<?php echo url_for('campaign_addItems', $campaign) ?>">Agregar items</a>
-&nbsp;
+<?php if ($sf_user->hasCredential(array('admin'))): ?>
+<a href="<?php echo url_for('campaign_edit', $campaign) ?>">Editar datos de campaña</a>&nbsp;
+<a href="<?php echo url_for('campaign_addItems', $campaign) ?>">Agregar items</a>&nbsp;
+<?php endif; ?>
 <a href="<?php echo url_for('campaign') ?>">Volver al listado de campañas</a>
