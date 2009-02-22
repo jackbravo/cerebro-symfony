@@ -30,13 +30,14 @@ abstract class BaseItem extends sfDoctrineRecord
     $this->hasColumn('economico', 'string', 255, array('type' => 'string', 'length' => '255'));
     $this->hasColumn('instalacion', 'timestamp', null, array('type' => 'timestamp'));
     $this->hasColumn('desmontaje', 'timestamp', null, array('type' => 'timestamp'));
-    $this->hasColumn('evidencia', 'boolean', null, array('type' => 'boolean'));
+    $this->hasColumn('evidencia', 'boolean', null, array('type' => 'boolean', 'default' => false));
   }
 
   public function setUp()
   {
     $this->hasOne('Campaign', array('local' => 'campaign_id',
-                                    'foreign' => 'id'));
+                                    'foreign' => 'id',
+                                    'onDelete' => 'CASCADE'));
 
     $this->hasOne('Plaza', array('local' => 'plaza_id',
                                  'foreign' => 'id'));
