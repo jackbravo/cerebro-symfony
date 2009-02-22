@@ -22,12 +22,12 @@ class itemActions extends sfActions
 
   public function executeNew(sfWebRequest $request)
   {
-    $this->form = new ItemForm();
+    $this->form = $this->getForm();
   }
 
   public function executeCreate(sfWebRequest $request)
   {
-    $this->form = new ItemForm();
+    $this->form = $this->getForm();
 
     $this->processForm($request, $this->form);
 
@@ -36,16 +36,30 @@ class itemActions extends sfActions
 
   public function executeEdit(sfWebRequest $request)
   {
-    $this->form = new ItemForm($this->getRoute()->getObject());
+    $this->form = $this->getForm($this->getRoute()->getObject());
   }
 
   public function executeUpdate(sfWebRequest $request)
   {
-    $this->form = new ItemForm($this->getRoute()->getObject());
+    $this->form = $this->getForm($this->getRoute()->getObject());
 
     $this->processForm($request, $this->form);
 
     $this->setTemplate('edit');
+  }
+
+  protected function getForm($object = null)
+  {
+    if ($this->getUser()->hasCredential('admin')) {
+      return new ItemForm($object);
+    }
+    else
+      if ($this->getUser()->hasCredential('comercial')) {
+        return new ItemComercialForm($object);
+      }
+    else {
+      return new ItemUsuarioForm($object);
+    }
   }
 
   public function executeDelete(sfWebRequest $request)
