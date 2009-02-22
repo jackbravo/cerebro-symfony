@@ -48,11 +48,11 @@
       <?php $total = 0;
             $total_instalados = 0;
             $total_desmontados = 0;
-      if ($sf_user->hasCredential(array('admin','comercial'))){
+      if ($sf_user->hasCredential(array('admin','comercial'), false)){
         $rows = Doctrine::getTable('Campaign')->getItemResume($campaign->id);
       }
       else {
-        $rows = Doctrine::getTable('Campaign')->getItemResume($campaign->id, $sf_user->getAttribute('user_id', null, 'sfGuardSecurityUser'));
+        $rows = Doctrine::getTable('Campaign')->getItemResume($campaign->id, $sf_user->getId());
       }
       foreach ($rows as $row): ?><?php /*Esta función yo la hice y está en l/m/d/CampaignTable.class.php*/
         $total += $row['Total'];
