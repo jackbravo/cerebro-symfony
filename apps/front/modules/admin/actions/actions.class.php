@@ -41,5 +41,9 @@ class adminActions extends sfActions
      ->from('Tipo t');
 //     ->where('t.activa=true');
      $this->tipo_list = $q->execute();
+   $q = Doctrine_Query::create()
+     ->from('sfGuardUser usr');
+//     ->where('t.activa=true');
+     $this->usr_list = $q->execute();
   }
 }

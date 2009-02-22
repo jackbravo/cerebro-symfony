@@ -57,6 +57,13 @@
     <?php endforeach; ?>
     </tbody>
 </table>
-
+<table>
+<thead><tr><th scope="col"><a href="<?php echo url_for('sf_guard_user') ?>">Usuarios</a></th></tr></thead>
+    <tbody>
+    <?php foreach($usr_list as $usr): ?>
+    <tr><td><?php echo $usr->getUsername()?></td></tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
 
 
