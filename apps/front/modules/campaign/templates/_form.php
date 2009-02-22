@@ -70,7 +70,7 @@
         <th><?php echo $form['facturacion']->renderLabel() ?></th>
         <td>
           <?php echo $form['facturacion']->renderError() ?>
-          <?php echo $form['facturacion'] ?>
+          $ <?php echo $form['facturacion'] ?> MXN
         </td>
       </tr>
       <tr>
