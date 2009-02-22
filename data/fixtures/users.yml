@@ -4,10 +4,34 @@ sfGuardUser:
     password:       admin
     is_super_admin: true
 
-#sfGuardPermission:
-  #sgp_admin:
-    #name:           admin
-    #description:    Administrator permission
+  sgu_comercial:
+    username:       comercial
+    password:       comercial
+
+  sgu_operador1:
+    username:       op_gdl
+    password:       op_gdl
+  sgu_operador2:
+    username:       op_df
+    password:       op_df
+
+sfGuardPermission:
+  sgp_admin:
+    name:           admin
+    description:    Administrator permission
+
+  sgp_comercial:
+    name:           comercial
+    description:    Comercial permission
+
+sfGuardUserPermission:
+  sup_admin:
+    sfGuardUser:        sgu_admin
+    sfGuardPermission:  sgp_admin
+
+  sup_comercial:
+    sfGuardUser:        sgu_comercial
+    sfGuardPermission:  sgp_comercial
 
 #sfGuardGroup:
   #sgg_admin:
