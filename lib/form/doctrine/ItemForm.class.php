@@ -12,6 +12,7 @@ class ItemForm extends BaseItemForm
   public function configure()
   {   
     unset($this['fecha_actualizacion']);
+    unset($this['campaign_id']);
 
     $this->widgetSchema->setLabels(array(
       'campaign_id' => 'Campaña',
