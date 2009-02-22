@@ -85,6 +85,7 @@ Item:
       local: campaign_id
       foreign: id
       foreignAlias: Items
+      onDelete: CASCADE
     Plaza:
       local: plaza_id
       foreign: id
@@ -94,18 +95,22 @@ Item:
       foreign: id
       foreignAlias: Items
       class: CategoriaItem
+      onDelete: NULL
     Tipo:
       local: tipo_id
       foreign: id
       foreignAlias: Items
+      onDelete: NULL
     Impresor:
       local: impresor_id
       foreign: id
       foreignAlias: Items
+      onDelete: NULL
     Mensajeria:
       local: mensajeria_id
       foreign: id
       foreignAlias: Items
+      onDelete: NULL
     Responsable:
       class: sfGuardUser
       local: responsable_id
@@ -136,4 +141,18 @@ Mensajeria:
   columns:
     id: { type: integer(4), primary: true, autoincrement: true }
     nombre: { type: string(255) }
+
+Perfil:
+  columns:
+    id: { type: integer(4), primary: true, autoincrement: true }
+    nombre: { type: string(255) }
+    correo: { type: string(255) }
+    telefono: { type: string(255) }
+    user_id: { type: integer(4) }
+  relations:
+    User: 
+      local: user_id
+      class: sfGuardUser
+      foreignType: one
+
 
