@@ -14,14 +14,21 @@ class campaignActions extends sfActions
   {
  //   $this->campaign_list = $this->getRoute()->getObjects();
  
-     if ($request->hasParameter('activa')) {
-       $this->getUser()->setAttribute('campaign_activa', $request->getParameter('activa'));
-     }
-     $activa = $this->getUser()->getAttribute('campaign_activa', 1);
-     $q = Doctrine_Query::create()
-       ->from('Campaign c')
-       ->where('c.activa=?');
-     $this->campaign_list = $q->execute(array($activa));
+    if ($request->hasParameter('activa')) {
+      $this->getUser()->setAttribute('campaign_activa', $request->getParameter('activa'));
+    }
+    $activa = $this->getUser()->getAttribute('campaign_activa', 1);
+    $q = Doctrine_Query::create()
+      ->from('Campaign c')
+      ->addWhere('c.activa=?', array($activa));
+
+    if (!$this->getUser()->hasCredential(array('admin', 'comercial'), false)) {
+      $q->select('c.*, COUNT(i.id)');
+      $q->leftJoin('c.Items i');
+      $q->addWhere('i.responsable_id = ?', array($this->getUser()->getId()));
+    }
+
+    $this->campaign_list = $q->execute();
   }
 
   public function executeShow(sfWebRequest $request)
