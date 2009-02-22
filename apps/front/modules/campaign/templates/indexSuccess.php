@@ -10,7 +10,9 @@
       <th scope="col">Specialty</th>
       <th scope="col">Cliente</th>
       <th scope="col">Orden</th>
+      <?php if ($sf_user->hasCredential(array('admin'))):?>
       <th scope="col">Facturacion</th>
+      <?php endif; ?>
       <th scope="col">Duracion</th>
       <th scope="col">Fecha inicio</th>
       <th scope="col">Fecha cierre</th>
@@ -28,7 +30,9 @@
       <td title="Specialty"><?php echo $campaign->getSpecialty() ?></td>
       <td title="Cliente"><?php echo $campaign->getCliente() ?></td>
       <td title="No. de orden"><?php echo $campaign->getOrden() ?></td>
+      <?php if ($sf_user->hasCredential(array('admin'))):?>
       <td title="Facturación"><?php echo $campaign->getFacturacion() ?></td>
+      <?php endif; ?>
       <td title="Duración"><?php echo round($campaign->getDuracion()/86400,1) ." d<br/>".round(($campaign->getDuracion()/86400)/7,1)." w"?></td>
       <td title="Inicio"><?php echo $campaign->getfecha_inicio() ?></td>
       <td title="Cierre"><?php echo $campaign->getfecha_cierre() ?></td>
@@ -41,7 +45,20 @@
       <th>Instalados</th>
       <th>Desmontados</th>
     </tr>
-      <?php foreach(Doctrine::getTable('Campaign')->getItemResume($campaign->id) as $row): ?><?php /*Esta función yo la hice y está en l/m/d/CampaignTable.class.php*/?>   
+      <?php $total = 0;
+            $total_instalados = 0;
+            $total_desmontados = 0;
+      if ($sf_user->hasCredential(array('admin','comercial'))){
+        $rows = Doctrine::getTable('Campaign')->getItemResume($campaign->id);
+      }
+      else {
+        $rows = Doctrine::getTable('Campaign')->getItemResume($campaign->id, $sf_user->getAttribute('user_id', null, 'sfGuardSecurityUser'));
+      }
+      foreach ($rows as $row): ?><?php /*Esta función yo la hice y está en l/m/d/CampaignTable.class.php*/
+        $total += $row['Total'];
+        $total_instalados += $row['Instalados'];
+        $total_desmontados += $row['Desmontados'];
+      ?>   
       <tr>
         <td><?php echo $row['Responsable']?></td>
         <td><?php echo $row['Total']?></td>
@@ -49,6 +66,12 @@
         <td><?php echo $row['Desmontados']?></td>
       </tr>
       <?php endforeach; ?>
+      <tr>
+        <td><strong>Total</strong></td>
+        <td><strong><?php echo $total?></strong></td>
+        <td><strong><?php echo $total_instalados?></strong></td>
+        <td><strong><?php echo $total_desmontados?></strong></td>
+      </tr>
     <tr>
       <th>&nbsp;</th>
       <th>&nbsp;</th>

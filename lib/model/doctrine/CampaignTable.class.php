@@ -4,12 +4,19 @@
  */
 class CampaignTable extends Doctrine_Table
 {
-  public function getItemResume($id)
+  public function getItemResume($id, $user_id = null)
   {
     $dbh = $this->getConnection(); // Tomar la conexion de PDO de esta tabla (PDO es la librería de base de datos de php)
-    $sql = "select r.username as 'Responsable', count(i.id) as 'Total', count(i.instalacion) as 'Instalados', count(i.desmontaje) as 'Desmontados' from item i inner join sf_guard_user r on r.id=i.responsable_id where i.campaign_id=? group by i.responsable_id"; // Escribo mi query 
+    if ($user_id != null){
+      $query_agregado = 'AND r.id=?';
+      $params = array($id, $user_id);
+    } else {
+      $query_agregado = '';
+      $params = array($id);
+    }
+    $sql = "select r.username as 'Responsable', count(i.id) as 'Total', count(i.instalacion) as 'Instalados', count(i.desmontaje) as 'Desmontados' from item i inner join sf_guard_user r on r.id=i.responsable_id where i.campaign_id=? $query_agregado group by i.responsable_id"; // Escribo mi query 
     $sth = $dbh->prepare($sql); //Prepara el query de arriba para evitar inyección de SQL
-    $sth->execute(array($id)); // Ejecuta el query y reemplaza el signo ? por lo que le manda en el arreglo
+    $sth->execute($params); // Ejecuta el query y reemplaza el signo ? por lo que le manda en el arreglo
     return $sth->fetchAll(PDO::FETCH_ASSOC); //devuelve el resultado y le dá a cada campo del array el nombre que establecí arriba
   }
 }
