@@ -1,46 +1,89 @@
-html{color:#fff;}
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td
-{
+*{
     margin:0;padding:0;
 }
-table
-{
-    background:#B9C9FE none repeat scroll 0 0;
-    border-bottom:1px solid #FFFFFF;
-    border-top:4px solid #AABCFE;
-    color:#003399;
-    font-size:13px;
-    font-weight:normal;
-    padding:0px 12px 0px;
-    max-width: 1000px;
-    margin:auto;
-    text-align: left;
+html{
+  color:#fff;
+  background-color: #666;
+  background: url(textura.jpg);
+  margin: 0 20 0px;
+  padding-top: 0px; 
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 0px;
+  font-size: 100%;
 }
-fieldset,img{
-    border:0;
+
+body{
+  background: url(textura.jpg); 
+  background-color: #fff;
+  *font:x-small;
+  font: 14px "Lucida Grande", Lucida, Verdana, sans-serif;
+  font:13px/1.5 Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif
 }
-address,caption,cite,code,dfn,em,strong,th,var
-{
-    font-style:normal;font-weight:normal;
+
+select,input,button,textarea{
+  font:99% arial,helvetica,clean,sans-serif;outline: none;
 }
-li
-{
+pre,code,kbd,samp,tt{
+  font-family:monospace;*font-size:108%;line-height:100%;
+}
+
+li{
     list-style:none;
 }
-caption,th
-{
-    text-align:left;
-    font-weight: bold;
-}
-h1,h2,h3,h4,h5,h6
-{
+h1,h2,h3,h4,h5,h6{
     font-size:150%;
     font-weight:bold;
     color: #F80;
-    text-align:center;
-    padding-top:20px;
-    padding-bottom:20px;
+    text-align:left;
+    padding-top:10px;
 }
+table{
+    font-size:inherit;font:100%;
+    background:#e8e8e8 none repeat scroll 0 0;
+    border-bottom:1px solid #f80;
+    border-top:4px solid #f80;
+    border-collapse: collapse;
+    color:#333;
+    font-size:13px;
+    font-weight:normal;
+    padding:0px 0px 0px;
+    text-align: left;
+    margin-bottom: 6px;
+}
+
+table a{
+  font-weight: bold;
+  color: #333;
+  
+}
+
+td, th{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+th{
+  background-color: #f80;
+}
+
+
+.hideextra {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+tr.odd {
+  background-color: #fAf9f9;
+}
+tr.even {
+  background-color: #e8e8e8;
+}
+
+fieldset,img{
+    border:0;
+}
+
 q:before,q:after
 {
     content:'';
@@ -48,21 +91,15 @@ q:before,q:after
 abbr,acronym{
     border:0;font-variant:normal;
 }
-sup
-{
+sup{
     vertical-align:text-top;
 }
-sub
-{
+sub{
     vertical-align:text-bottom;
 }
-input,textarea,select
-{
+input,textarea,select{
     font-family:inherit;font-size:inherit;font-weight:inherit;
-}
-input,textarea,select
-{
-    *font-size:100%;
+    *font-size: 100%;
 }
 legend
 {
@@ -72,58 +109,68 @@ del,ins{
     text-decoration:none;
 }
 
-/*
-Fonts CSS
-Copyright (c) 2008, Yahoo! Inc. All rights reserved.
-Code licensed under the BSD License:
-http://developer.yahoo.net/yui/license.txt
-version: 2.6.0
-*/
-body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;}select,input,button,textarea{font:99% arial,helvetica,clean,sans-serif;outline: none;}table{font-size:inherit;font:100%;}pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}
-
-a
-{
-  color: #039;
+a{
+  color: #ddd;
   outline: none;
 }
 a:hover
 {
-    color: #039;
-    background-color:#b9c9fe
+    color: #333;
+    background-color: #e8e8e8;
 }
 
-body
-{
-  font: 14px "Lucida Grande", Lucida, Verdana, sans-serif;
-  background-color: #fff;
-}
+a:focus {outline:1px dotted invert}
+hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}
+h1{font-size:25px}
+h2{font-size:23px}
+h3{font-size:21px}
+h4{font-size:19px}
+h5{font-size:17px}
+h6{font-size:15px}
+ol{list-style:decimal}
+ul{list-style:square}
+li{margin-left:30px}
 
 #container
 {
   margin-left: auto;
   margin-right: auto;
-  background: #fff url(../images/bg-page.png) bottom repeat-x;
+  background: #fff url(../) bottom repeat-x;
 }
 
 #header
 {
-  background: url(../images/bg-header.jpg) repeat-x top;
+  /*background: url(../images/bg-header.jpg) repeat-x top;*/
+  background-color: #333;
+  padding: 0px;
+  padding-left: 10px;
 }
 
 #header h1
 {
-  height: 110px;
-  width: 783px;
-  margin: 0 auto;
+  font-size: 15px;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 10px;
+  padding-bottom: 0px;
+  text-align: right;
 }
 
 #header h1 a {
-  display: block;
+  /*display: block;
   width: 150px;
   height: 110px;
-  background: url(../images/logo.jpg) no-repeat;
+  background: url(../images/logo.jpg) no-repeat;*/
 }
 
+#header li{
+  display: inline;
+  list-style-type: none;
+  padding: 0px;
+}
 
 #header h1 img
 {
@@ -381,137 +428,5 @@ em
   padding: 7px;
   background-color: #f33;
   color: #fff;
-}
-
-
-#job_history
-{
-  width: 740px;
-  margin: 0 auto;
-  padding: 7px;
-  font-size: 80%;
-  color: #5d6162;
-}
-
-#job_history a
-{
-  color: #5d6162;
-}
-
-#job_history ul
-{
-  display: inline;
-}
-
-#job_history li
-{
-  margin-right: 10px;
-  display: inline;
-}
-
-#job_form {
-  width: 760px;
-  margin: 0 auto;
-}
-
-#job_form .radio_list label {
-  margin-right: 15px;
-}
-
-
-#job_form th
-{
-  white-space: nowrap;
-  font-style: italic;
-}
-
-#job_form td, #job_form th
-{
-  border-bottom: 1px solid #eee;
-  border-top: 1px solid #eee;
-  text-align: left;
-  vertical-align: top;
-  padding: 7px;
-}
-
-#job_form tfoot td, #job_form tfoot th
-{
-  border: 0;
-  text-align: right;
-}
-
-#job_form .radio_list li
-{
-  display: inline;
-}
-
-#box-table-a
-{
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;
-	margin: 45px;
-    width: 80%;
-	max-width: 1100px;
-	text-align: left;
-	border-collapse: collapse;
-    margin: auto;
-}
-#box-table-a th
-{
-	font-size: 13px;
-	font-weight: normal;
-	padding: 8px;
-	background: #b9c9fe;
-	border-top: 4px solid #aabcfe;
-	border-bottom: 1px solid #fff;
-	color: #039;
-}
-#box-table-a td
-{
-	padding: 8px;
-	background: #e8edff; 
-	border-bottom: 1px solid #fff;
-	color: #669;
-	border-top: 1px solid transparent;
-}
-#box-table-a th, td
-{
-    padding: 1px 8px;
-}
-#box-table-a tr:hover td
-{
-	background: #d0dafd;
-	color: #339;
-}
-
-
-#box-table-b
-{
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;
-	margin: 45px;
-	width: 480px;
-	text-align: center;
-	border-collapse: collapse;
-	border-top: 7px solid #9baff1;
-	border-bottom: 7px solid #9baff1;
-}
-#box-table-b th
-{
-	font-size: 13px;
-	font-weight: normal;
-	padding: 8px;
-	background: #e8edff;
-	border-right: 1px solid #9baff1;
-	border-left: 1px solid #9baff1;
-	color: #039;
-}
-#box-table-b td
-{
-	padding: 8px;
-	background: #e8edff; 
-	border-right: 1px solid #aabcfe;
-	border-left: 1px solid #aabcfe;
-	color: #669;
 }
 
