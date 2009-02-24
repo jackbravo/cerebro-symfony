@@ -1,88 +1,96 @@
 <h1>Campaña: <?php echo $campaign->getnombre()?></h1>
 </br>
-<table>
+<table class="campaign">
   <tbody>
     <tr>
-      <th>Fecha ingreso:</th>
+      <th class="hideextra" style="width:150px">Fecha ingreso:</th>
       <td><?php echo $campaign->getfecha_ingreso() ?></td>
-      <th>Id:</th>
+      <th class="hideextra" style="width:150px">Id:</th>
       <td><?php echo $campaign->getid() ?></td>
     </tr>
     <tr>
-      <th>Vendedor:</th>
+      <th class="hideextra" style="width:150px">Vendedor:</th>
       <td><?php echo $campaign->Vendedor ?></td>
-      <th>Categoria:</th>
+      <th class="hideextra" style="width:150px">Categoria:</th>
       <td><?php echo $campaign->Categoria ?></td>
     </tr>
     <tr>
-      <th>Producto:</th>
+      <th class="hideextra" style="width:150px">Producto:</th>
       <td><?php echo $campaign->Producto ?></td>
-      <th>Specialty:</th>
+      <th class="hideextra" style="width:150px">Specialty:</th>
       <td><?php echo $campaign->Specialty ?></td>
     </tr>
     <tr>
-      <th>Cliente:</th>
+      <th class="hideextra" style="width:150px">Cliente:</th>
       <td><?php echo $campaign->getcliente() ?></td>
-      <th>Orden de compra:</th>
+      <th class="hideextra" style="width:150px">Orden de compra:</th>
       <td><?php echo $campaign->getorden() ?></td>
     </tr>
     <tr>
-      <th>Duración:</th>
+      <th class="hideextra" style="width:150px">Duración:</th>
       <?php 
        $day = $campaign->getDuracion(); //esta función está en l/m/d/Campaign.class.php
        $day/=86400;
        $wk = round(($day/7),1);
       ?>
       <td><?php echo $day." días "."<br />".$wk." semanas" ?></td>
-      <th>Fecha inicio:</th>
+      <th class="hideextra" style="width:150px">Fecha inicio:</th>
       <td><?php echo $campaign->getfecha_inicio() ?></td>
     </tr>
     <tr>
-      <th>Fecha de cierre:</th>
+      <th class="hideextra" style="width:150px">Fecha de cierre:</th>
       <td><?php echo $campaign->getfecha_cierre() ?></td>
-      <th>Activa:</th>
-      <td><?php echo $campaign->getactiva() ?></td>
+      <th class="hideextra" style="width:150px">Estado:</th>
+      <td><?php if ($campaign->getactiva()==1) echo 'Activa'; else echo 'Inactiva'?></td>
     </tr>
     <?php /*if ($sf_user->hasCredential(array('admin', 'comercial'), false)): */ //Esta notación es para cuando quieres revisar si tiene una u otra credencial?>
     <?php if ($sf_user->hasCredential(array('admin'))): ?>
     <tr>
-      <th>Facturación:</th>
+      <th class="hideextra" style="width:150px">Facturación:</th>
       <td><?php echo $campaign->getfacturacion() ?></td>
+      <th>&nbsp;</th>
+      <td>&nbsp;</td>
     </tr>
     <?php endif; ?>
     <tr>
-      <th>Fecha actualizacion:</th>
+      <th class="hideextra" style="width:150px">Fecha actualizacion:</th>
       <td><?php echo $campaign->getfecha_actualizacion() ?></td>
+      <th>&nbsp;</th>
+      <td>&nbsp;</td>
     </tr>
   </tbody>
 </table>
+<?php if ($sf_user->hasCredential(array('admin'))): ?>
+<a href="<?php echo url_for('campaign_edit', $campaign) ?>">Editar datos de campaña</a>&nbsp;
+<a href="<?php echo url_for('campaign_addItems', $campaign) ?>">Agregar items</a>&nbsp;
+<?php endif; ?>
 <h1>Items</h1>
   <table>
     <thead>
       <tr>
-        <th>Id item</th>
-        <th>Última actualización</th>
-        <th>Plaza</th>
-        <th>Categoria</th>
-        <th>Tipo</th>
-        <th>Responsable</th>
-        <th>Pba. color</th>
-        <th>Impresor</th>
-        <th>Entrada imp.</th>
-        <th>Salida imp.</th>
-        <th>Mensajería</th>
-        <th>No. guía</th>
-        <th>Fecha envío</th>
-        <th>Fecha recepción</th>
-        <th>Permisionario</th>
-        <th>Carrocería</th>
-        <th>Compra directa</th>
-        <th>Ruta</th>
-        <th>Placas</th>
-        <th>Económico</th>
-        <th>Instalación</th>
-        <th>Desmontaje</th>
-        <th>Evidencia</th>
+        <th class="hideextra" style="width:300px">Id item</th>
+        <th class="hideextra" style="width:300px">Última actualización</th>
+        <th class="hideextra" style="width:300px">Plaza</th>
+        <th class="hideextra" style="width:300px">Categoria</th>
+        <th class="hideextra" style="width:300px">Tipo</th>
+        <th class="hideextra" style="width:300px">Responsable</th>
+        <th class="hideextra" style="width:300px">Pba. color</th>
+        <th class="hideextra" style="width:300px">Impresor</th>
+        <th class="hideextra" style="width:300px">Entrada imp.</th>
+        <th class="hideextra" style="width:300px">Salida imp.</th>
+        <th class="hideextra" style="width:300px">Mensajería</th>
+        <th class="hideextra" style="width:300px">No. guía</th>
+        <th class="hideextra" style="width:300px">Fecha envío</th>
+        <th class="hideextra" style="width:300px">Fecha recepción</th>
+        <th class="hideextra" style="width:300px">Permisionario</th>
+        <th class="hideextra" style="width:300px">Carrocería</th>
+        <th class="hideextra" style="width:300px">Compra directa</th>
+        <th class="hideextra" style="width:300px">Ruta</th>
+        <th class="hideextra" style="width:300px">Placas</th>
+        <th class="hideextra" style="width:300px">Económico</th>
+        <th class="hideextra" style="width:300px">Instalación</th>
+        <th class="hideextra" style="width:300px">Desmontaje</th>
+        <th class="hideextra" style="width:300px">Evidencia</th>
       </tr>
     </thead>
     <tbody>
@@ -93,8 +101,8 @@
       else {
         $items = $campaign->getItems($sf_user->getId());
       }
-      foreach ($items as $item): ?> <?php //reemplazar esto por algo así como $campaign->getItems as $items o algo así...?>
-      <tr>
+      foreach ($items as $i => $item): ?> 
+      <tr class="<?php echo fmod($i,2) == 0 ? 'even' : 'odd' ?>">
         <td title="Id del ítem"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->id ?></a></td>
         <td title="Última actualización"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->fecha_actualizacion ?></a></td>
         <td title="Plaza"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->Plaza ?></a></td>
@@ -123,8 +131,7 @@
     </tbody>   
   </table>
 
-<?php if ($sf_user->hasCredential(array('admin'))): ?>
-<a href="<?php echo url_for('campaign_edit', $campaign) ?>">Editar datos de campaña</a>&nbsp;
-<a href="<?php echo url_for('campaign_addItems', $campaign) ?>">Agregar items</a>&nbsp;
-<?php endif; ?>
 <a href="<?php echo url_for('campaign') ?>">Volver al listado de campañas</a>
+<br />
+<br />
+<br />

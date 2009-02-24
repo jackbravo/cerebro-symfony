@@ -1,6 +1,7 @@
 <h1>Listado de campañas <?php echo $sf_user->getAttribute('campaign_activa', 1) == 1 ? 'activas' : 'inactivas' ;?></h1>
 
-<table id="box-table-a" summary="Listado de campañas">
+<?php foreach ($campaign_list as $campaign): ?>
+<table id="box-table-a" summary="Detalles de campaña - <?php echo $campaign->getnombre()?>">
   <thead>
     <tr>
       <th scope="col">Nombre</th>
@@ -16,28 +17,25 @@
       <th scope="col">Duracion</th>
       <th scope="col">Fecha inicio</th>
       <th scope="col">Fecha cierre</th>
-      <th scope="col">Activa</th>
       <th scope="col">Fecha ingreso</th>
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($campaign_list as $campaign): ?>
     <tr>
-      <td title="Nombre"><a href="<?php echo url_for('campaign_show', $campaign) ?>"><?php echo $campaign->getnombre() ?></a></td>
-      <td title="Vendedor"><?php echo $campaign->getVendedor() ?></td>
-      <td title="Categoría"><?php echo $campaign->getCategoria() ?></td>
-      <td title="Producto"><?php echo $campaign->getProducto() ?></td>
-      <td title="Specialty"><?php echo $campaign->getSpecialty() ?></td>
-      <td title="Cliente"><?php echo $campaign->getCliente() ?></td>
-      <td title="No. de orden"><?php echo $campaign->getOrden() ?></td>
+      <td title="Nombre" class="hideextra" style="width:300px"><a href="<?php echo url_for('campaign_show', $campaign) ?>"><?php echo $campaign->getnombre() ?></a></td>
+      <td title="Vendedor" class="hideextra" style="width:400px"><?php echo $campaign->getVendedor() ?></td>
+      <td title="Categoría" class="hideextra" style="width:400px"><?php echo $campaign->getCategoria() ?></td>
+      <td title="Producto" class="hideextra" style="width:400px"><?php echo $campaign->getProducto() ?></td>
+      <td title="Specialty" class="hideextra" style="width:400px"><?php echo $campaign->getSpecialty() ?></td>
+      <td title="Cliente" class="hideextra" style="width:400px"><?php echo $campaign->getCliente() ?></td>
+      <td title="No. de orden" class="hideextra" style="width:400px"><?php echo $campaign->getOrden() ?></td>
       <?php if ($sf_user->hasCredential(array('admin'))):?>
-      <td title="Facturación"><?php echo $campaign->getFacturacion() ?></td>
+      <td title="Facturación" class="hideextra" style="width:400px">$<?php echo $campaign->getFacturacion() ?> MXN</td>
       <?php endif; ?>
-      <td title="Duración"><?php echo round($campaign->getDuracion()/86400,1) ." d<br/>".round(($campaign->getDuracion()/86400)/7,1)." w"?></td>
-      <td title="Inicio"><?php echo $campaign->getfecha_inicio() ?></td>
-      <td title="Cierre"><?php echo $campaign->getfecha_cierre() ?></td>
-      <td title="¿Es activa?"><?php echo $campaign->getactiva() ?></td>
-      <td title="Fecha de ingreso"><?php echo $campaign->getfecha_ingreso() ?></td>
+      <td title="Duración" class="hideextra" style="width:400px"><?php echo round($campaign->getDuracion()/86400,1) ." d<br/>".round(($campaign->getDuracion()/86400)/7,1)." w"?></td>
+      <td title="Inicio" class="hideextra" style="width:400px"><?php echo $campaign->getfecha_inicio() ?></td>
+      <td title="Cierre" class="hideextra" style="width:400px"><?php echo $campaign->getfecha_cierre() ?></td>
+      <td title="Fecha de ingreso" class="hideextra" style="width:800px"><?php echo $campaign->getfecha_ingreso() ?></td>
     </tr>
     <tr>
       <th>Responsable</th>
@@ -72,19 +70,7 @@
         <td><strong><?php echo $total_instalados?></strong></td>
         <td><strong><?php echo $total_desmontados?></strong></td>
       </tr>
-    <tr>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-    </tr>
-    <?php endforeach; ?>
   </tbody>
 </table>
-  <?php if ($sf_user->hasCredential(array('admin'))): ?>
-  <a href="<?php echo url_for('campaign_new') ?>">Agregar campaña</a>&nbsp;
-  <a href="<?php echo url_for('/admin') ?>">Administrar sistema</a>&nbsp;
-  <?php endif; ?>
-  <?php echo link_to('Activas', 'campaign', array('activa' => 1)); ?>&nbsp;
-  <a href="<?php echo url_for('campaign', array('activa' => 0)) ?>">Inactivas</a> 
+<?php endforeach; ?>
   
