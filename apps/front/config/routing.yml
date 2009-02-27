@@ -80,6 +80,7 @@ item:
   class: sfDoctrineRouteCollection
   options:
     model:  Item
+    collection_actions: { batch: post, batchUpdate: post }
 
 # default rules
 homepage:
