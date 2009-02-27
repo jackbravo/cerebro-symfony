@@ -300,45 +300,23 @@ li{margin-left:30px}
 #footer
 {
   margin-top: 60px;
-  font-size: 90%;
+  font-size: 10px;
   margin-bottom: 0px;
-  height: 153px;
+  height: 113px;
   background: url(../images/bg-footer.jpg) repeat-x bottom;
   padding-top: 10px;
+  padding-bottom: 0px;
   position: relative;
 }
 
 #footer .content {
-  width: 783px;
   margin: 0 auto;
+  text-align: right;
 }
 
 #footer a
 {
   color: #77766F;
-}
-
-#footer ul
-{
-  display: inline;
-}
-
-#footer li
-{
-  list-style: none;
-  margin-right: 15px;
-  display: inline;
-}
-
-#footer li a
-{
-  text-decoration: none;
-}
-
-#footer li a:hover
-{
-  color: #000;
-  text-decoration: underline;
 }
 
 #footer .symfony,
@@ -430,3 +408,69 @@ em
   color: #fff;
 }
 
+#login-box
+{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+
+#login-box table
+{
+  border-top: 2px solid #f80;
+  border-bottom: 2px solid #f80;
+}
+
+#footer-urban
+{
+  margin-top: 50px;
+  font-size: 10px;
+  /*margin-bottom: 0px;*/
+  height: 118px;
+  background: url(../images/bg-footer-truck.jpg) repeat-x bottom;
+  background-color: #f80;
+  /*padding-top: 10px;*/
+  /*padding-bottom: 10px;*/
+  /*position: relative;*/
+  text-align: right;
+}
+
+#footer-urban-text
+{
+  text-align: right;
+  font-size: 11px;
+  color: #444;
+  background-color: #f80;
+  padding-right: 4px;
+}
+
+#footer-urban-text a
+{
+  color: #444;
+}
+#footer-urban-text a:hover
+{
+    color: #f80;
+    background-color: #444;
+}
+#footer-login
+{
+background: url(../images/bg-footer-truck.jpg) repeat-x top;
+background-color:#f80;
+bottom:0;
+color:#000;
+font-family:Verdana,Geneva,Arial,sans-serif;
+font-size:10px;
+height:143px;
+left:0;
+position:absolute;
+text-align:right;
+width:100%;
+margin-top: 140px;
+}
+#footer-login p
+{
+  margin-top: 125px;
+  padding-right: 4px;
+}

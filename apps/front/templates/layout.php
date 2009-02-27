@@ -21,5 +21,11 @@
     </div>
     <?php endif;?>
     <?php echo $sf_content ?>
+  <div id="footer-urban">
+  </div>
+  <div id="footer-urban-text">
+    CEREBRO - Truckvision control&reg; v0.1 - 2009 - <a href="http://axai.com.mx">by axai</a>
+  </div>
+  <br />
   </body>
 </html>
