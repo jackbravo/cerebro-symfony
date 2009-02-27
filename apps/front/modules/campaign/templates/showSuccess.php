@@ -1,3 +1,28 @@
+
+<script type="text/javascript">
+function toggleBatchActions()
+{
+  if ( $('input:checked.batch').length > 0 ) {
+    $('#batch-actions :input').attr('disabled', false);
+  } else {
+    $('#batch-actions :input').attr('disabled', true);
+  }
+}
+function checkAll(checkbox)
+{
+  var parent = $(checkbox).parents('table').get(0);
+  $('input:checkbox', parent).attr('checked', checkbox.checked);
+  toggleBatchActions();
+}
+
+$(document).ready(function(){
+  $('input:checkbox.batch').change(function(){
+    toggleBatchActions();
+  });
+  toggleBatchActions();
+});
+</script>
+
 <h1>Campaña: <?php echo $campaign->getnombre()?></h1>
 </br>
 <table class="campaign">
@@ -65,9 +90,11 @@
 <a href="<?php echo url_for('campaign_addItems', $campaign) ?>">Agregar items</a>&nbsp;
 <?php endif; ?>
 <h1>Items</h1>
+  <form action="<?php echo url_for('item_batch')?>" method="post">
   <table>
     <thead>
       <tr>
+        <th><input type="checkbox" onclick="checkAll(this);"/></th>
         <th class="hideextra" style="width:300px">Id item</th>
         <th class="hideextra" style="width:300px">Última actualización</th>
         <th class="hideextra" style="width:300px">Plaza</th>
@@ -103,6 +130,7 @@
       }
       foreach ($items as $i => $item): ?> 
       <tr class="<?php echo fmod($i,2) == 0 ? 'even' : 'odd' ?>">
+        <td><div style="width:20px;"><input class="batch" type="checkbox" name="ids[]" value="<?php echo $item['id'] ?>" /></div></td>
         <td title="Id del ítem"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->id ?></a></td>
         <td title="Última actualización"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->fecha_actualizacion ?></a></td>
         <td title="Plaza"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->Plaza ?></a></td>
@@ -130,6 +158,10 @@
       <?php endforeach; ?>
     </tbody>   
   </table>
+    <div id="batch-actions">
+      <input type="submit" value="Editar" name='_edit' />
+    </div>
+  </form>
 
 <a href="<?php echo url_for('campaign') ?>">Volver al listado de campañas</a>
 <br />

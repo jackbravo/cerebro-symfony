@@ -48,6 +48,56 @@ class itemActions extends sfActions
     $this->setTemplate('edit');
   }
 
+  public function executeBatch(sfWebRequest $request)
+  {
+    if (!$ids = $request->getParameter('ids'))
+    {
+      $this->getUser()->setFlash('error', 'Debes elegir al menos un item a editar.');
+
+      $this->redirect('@item');
+    }
+
+    $validator = new sfValidatorDoctrineChoiceMany(array('model' => 'Item'));
+    try
+    {
+      // validate ids
+      $ids = $validator->clean($ids);
+
+      // execute batch
+      if ($request->hasParameter('_edit'))
+      {
+        $this->forward('item', 'batchEdit');
+      }
+    }
+    catch (sfValidatorError $e)
+    {
+      $this->getUser()->setFlash('error', 'Algunos de los items seleccionados no son válidos o no están disponibles');
+      $this->redirect('@item');
+    }
+  }
+
+  public function executeBatchEdit(sfWebRequest $request)
+  {
+    $this->items = Doctrine::getTable('Item')->findIds($request->getParameter('ids'));
+    $this->form = new ItemBatchForm();
+  }
+
+  public function executeBatchUpdate(sfWebRequest $request)
+  {
+    $this->form = new ItemBatchForm();
+    $this->form->ids = $request->getParameter('ids');
+
+    $this->form->bind($request->getParameter($this->form->getName()));
+    if ($this->form->isValid())
+    {
+      $items = $this->form->save();
+
+      $this->redirect('@campaign_show?id='.$items[0]['campaign_id']);
+    }
+
+    $this->setTemplate('batchEdit');
+  }
+
   protected function getForm($object = null)
   {
     if ($this->getUser()->hasCredential('admin')) {
