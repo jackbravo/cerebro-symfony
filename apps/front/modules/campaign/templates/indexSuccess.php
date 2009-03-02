@@ -1,5 +1,5 @@
 <h1>Listado de campañas <?php echo $sf_user->getAttribute('campaign_activa', 1) == 1 ? 'activas' : 'inactivas' ;?></h1>
-
+<?php if (sizeof($campaign_list)>0){?>
 <?php foreach ($campaign_list as $campaign): ?>
 <table id="box-table-a" summary="Detalles de campaña - <?php echo $campaign->getnombre()?>">
   <thead>
@@ -72,5 +72,11 @@
       </tr>
   </tbody>
 </table>
-<?php endforeach; ?>
+<?php endforeach; 
+}
+else{
+  echo "<h4>No existen campañas ";
+  echo $sf_user->getAttribute('campaign_activa', 1) == 1 ? 'activas' : 'inactivas' ;
+  echo " en este momento</h4>";
+}?>
   

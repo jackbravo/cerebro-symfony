@@ -23,7 +23,6 @@ class campaignActions extends sfActions
       ->addWhere('c.activa=?', array($activa));
 
     if (!$this->getUser()->hasCredential(array('admin', 'comercial'), false)) {
-      $q->select('c.*, COUNT(i.id)');
       $q->leftJoin('c.Items i');
       $q->addWhere('i.responsable_id = ?', array($this->getUser()->getId()));
     }
