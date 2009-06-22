@@ -23,7 +23,7 @@ class Campaign extends BaseCampaign
       ->leftJoin('i.Impresor imp')
       ->leftJoin('i.Mensajeria m')
       ->addWhere('i.campaign_id=?', array($this->id))
-      ->orderBy('i.responsable_id');
+      ->orderBy('i.plaza_id, i.position');
 
     if ($responsable_id){
       $q->addWhere('i.responsable_id = ?', array($responsable_id));

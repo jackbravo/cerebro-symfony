@@ -95,7 +95,7 @@ $(document).ready(function(){
     <thead>
       <tr>
         <th><input type="checkbox" onclick="checkAll(this);"/></th>
-        <th class="hideextra" style="width:300px">Id item</th>
+        <th class="hideextra" style="width:300px">Consecutivo</th>
         <th class="hideextra" style="width:300px">Última actualización</th>
         <th class="hideextra" style="width:300px">Plaza</th>
         <th class="hideextra" style="width:300px">Categoria</th>
@@ -131,7 +131,7 @@ $(document).ready(function(){
       foreach ($items as $i => $item): ?> 
       <tr class="<?php echo fmod($i,2) == 0 ? 'even' : 'odd' ?>">
         <td><div style="width:20px;"><input class="batch" type="checkbox" name="ids[]" value="<?php echo $item['id'] ?>" /></div></td>
-        <td title="Id del ítem"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->id ?></a></td>
+        <td title="Id del ítem"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->position ?></a></td>
         <td title="Última actualización"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->fecha_actualizacion ?></a></td>
         <td title="Plaza"><a href="<?php echo url_for('item_edit', $item) ?>"><?php echo $item->Plaza ?></a></td>
         <td title="Categoría"><?php echo $item->Categoria ?></td>
