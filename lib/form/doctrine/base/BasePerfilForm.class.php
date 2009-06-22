@@ -16,7 +16,7 @@ class BasePerfilForm extends BaseFormDoctrine
       'nombre'   => new sfWidgetFormInput(),
       'correo'   => new sfWidgetFormInput(),
       'telefono' => new sfWidgetFormInput(),
-      'user_id'  => new sfWidgetFormDoctrineSelect(array('model' => 'sfGuardUser', 'add_empty' => true)),
+      'user_id'  => new sfWidgetFormDoctrineChoice(array('model' => 'sfGuardUser', 'add_empty' => true)),
     ));
 
     $this->setValidators(array(

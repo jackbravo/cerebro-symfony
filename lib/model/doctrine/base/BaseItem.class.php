@@ -5,59 +5,139 @@
  */
 abstract class BaseItem extends sfDoctrineRecord
 {
-  public function setTableDefinition()
-  {
-    $this->setTableName('item');
-    $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'primary' => true, 'autoincrement' => true, 'length' => '4'));
-    $this->hasColumn('campaign_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
-    $this->hasColumn('plaza_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
-    $this->hasColumn('categoria_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
-    $this->hasColumn('tipo_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
-    $this->hasColumn('responsable_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
-    $this->hasColumn('prueba_color', 'timestamp', null, array('type' => 'timestamp'));
-    $this->hasColumn('impresor_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
-    $this->hasColumn('entrada_impresor', 'timestamp', null, array('type' => 'timestamp'));
-    $this->hasColumn('salida_impresor', 'timestamp', null, array('type' => 'timestamp'));
-    $this->hasColumn('mensajeria_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
-    $this->hasColumn('guia', 'string', 255, array('type' => 'string', 'length' => '255'));
-    $this->hasColumn('fecha_envio', 'timestamp', null, array('type' => 'timestamp'));
-    $this->hasColumn('fecha_recepcion', 'timestamp', null, array('type' => 'timestamp'));
-    $this->hasColumn('permisionario', 'string', 255, array('type' => 'string', 'length' => '255'));
-    $this->hasColumn('carroceria', 'string', 255, array('type' => 'string', 'length' => '255'));
-    $this->hasColumn('compra_directa', 'string', 255, array('type' => 'string', 'length' => '255'));
-    $this->hasColumn('ruta', 'string', 255, array('type' => 'string', 'length' => '255'));
-    $this->hasColumn('placas', 'string', 255, array('type' => 'string', 'length' => '255'));
-    $this->hasColumn('economico', 'string', 255, array('type' => 'string', 'length' => '255'));
-    $this->hasColumn('instalacion', 'timestamp', null, array('type' => 'timestamp'));
-    $this->hasColumn('desmontaje', 'timestamp', null, array('type' => 'timestamp'));
-    $this->hasColumn('evidencia', 'boolean', null, array('type' => 'boolean', 'default' => false));
-  }
+    public function setTableDefinition()
+    {
+        $this->setTableName('item');
+        $this->hasColumn('id', 'integer', 4, array(
+             'type' => 'integer',
+             'primary' => true,
+             'autoincrement' => true,
+             'length' => '4',
+             ));
+        $this->hasColumn('campaign_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('plaza_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('categoria_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('tipo_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('responsable_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('prueba_color', 'timestamp', null, array(
+             'type' => 'timestamp',
+             ));
+        $this->hasColumn('impresor_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('entrada_impresor', 'timestamp', null, array(
+             'type' => 'timestamp',
+             ));
+        $this->hasColumn('salida_impresor', 'timestamp', null, array(
+             'type' => 'timestamp',
+             ));
+        $this->hasColumn('mensajeria_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('guia', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('fecha_envio', 'timestamp', null, array(
+             'type' => 'timestamp',
+             ));
+        $this->hasColumn('fecha_recepcion', 'timestamp', null, array(
+             'type' => 'timestamp',
+             ));
+        $this->hasColumn('permisionario', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('carroceria', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('compra_directa', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('ruta', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('placas', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('economico', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('instalacion', 'timestamp', null, array(
+             'type' => 'timestamp',
+             ));
+        $this->hasColumn('desmontaje', 'timestamp', null, array(
+             'type' => 'timestamp',
+             ));
+        $this->hasColumn('evidencia', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+    }
 
-  public function setUp()
-  {
-    $this->hasOne('Campaign', array('local' => 'campaign_id',
-                                    'foreign' => 'id',
-                                    'onDelete' => 'CASCADE'));
+    public function setUp()
+    {
+        $this->hasOne('Campaign', array(
+             'local' => 'campaign_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
-    $this->hasOne('Plaza', array('local' => 'plaza_id',
-                                 'foreign' => 'id'));
+        $this->hasOne('Plaza', array(
+             'local' => 'plaza_id',
+             'foreign' => 'id'));
 
-    $this->hasOne('CategoriaItem as Categoria', array('local' => 'categoria_id',
-                                                      'foreign' => 'id'));
+        $this->hasOne('CategoriaItem as Categoria', array(
+             'local' => 'categoria_id',
+             'foreign' => 'id'));
 
-    $this->hasOne('Tipo', array('local' => 'tipo_id',
-                                'foreign' => 'id'));
+        $this->hasOne('Tipo', array(
+             'local' => 'tipo_id',
+             'foreign' => 'id'));
 
-    $this->hasOne('Impresor', array('local' => 'impresor_id',
-                                    'foreign' => 'id'));
+        $this->hasOne('Impresor', array(
+             'local' => 'impresor_id',
+             'foreign' => 'id'));
 
-    $this->hasOne('Mensajeria', array('local' => 'mensajeria_id',
-                                      'foreign' => 'id'));
+        $this->hasOne('Mensajeria', array(
+             'local' => 'mensajeria_id',
+             'foreign' => 'id'));
 
-    $this->hasOne('sfGuardUser as Responsable', array('local' => 'responsable_id',
-                                                      'foreign' => 'id'));
+        $this->hasOne('sfGuardUser as Responsable', array(
+             'local' => 'responsable_id',
+             'foreign' => 'id'));
 
-    $timestampable0 = new Doctrine_Template_Timestampable(array('created' => array('disabled' => true), 'updated' => array('name' => 'fecha_actualizacion')));
-    $this->actAs($timestampable0);
-  }
+        $timestampable0 = new Doctrine_Template_Timestampable(array(
+             'created' => 
+             array(
+              'disabled' => true,
+             ),
+             'updated' => 
+             array(
+              'name' => 'fecha_actualizacion',
+             ),
+             ));
+        $this->actAs($timestampable0);
+    }
 }

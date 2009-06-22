@@ -5,41 +5,91 @@
  */
 abstract class BaseCampaign extends sfDoctrineRecord
 {
-  public function setTableDefinition()
-  {
-    $this->setTableName('campaign');
-    $this->hasColumn('id', 'integer', 4, array('type' => 'integer', 'primary' => true, 'autoincrement' => true, 'length' => '4'));
-    $this->hasColumn('nombre', 'string', 255, array('type' => 'string', 'notnull' => true, 'length' => '255'));
-    $this->hasColumn('vendedor_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
-    $this->hasColumn('categoria_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
-    $this->hasColumn('producto_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
-    $this->hasColumn('specialty_id', 'integer', 4, array('type' => 'integer', 'length' => '4'));
-    $this->hasColumn('cliente', 'string', 255, array('type' => 'string', 'length' => '255'));
-    $this->hasColumn('orden', 'string', 255, array('type' => 'string', 'length' => '255'));
-    $this->hasColumn('facturacion', 'float', null, array('type' => 'float'));
-    $this->hasColumn('fecha_inicio', 'timestamp', null, array('type' => 'timestamp'));
-    $this->hasColumn('fecha_cierre', 'timestamp', null, array('type' => 'timestamp'));
-    $this->hasColumn('activa', 'boolean', null, array('type' => 'boolean', 'default' => '1'));
-  }
+    public function setTableDefinition()
+    {
+        $this->setTableName('campaign');
+        $this->hasColumn('id', 'integer', 4, array(
+             'type' => 'integer',
+             'primary' => true,
+             'autoincrement' => true,
+             'length' => '4',
+             ));
+        $this->hasColumn('nombre', 'string', 255, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => '255',
+             ));
+        $this->hasColumn('vendedor_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('categoria_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('producto_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('specialty_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('cliente', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('orden', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('facturacion', 'float', null, array(
+             'type' => 'float',
+             ));
+        $this->hasColumn('fecha_inicio', 'timestamp', null, array(
+             'type' => 'timestamp',
+             ));
+        $this->hasColumn('fecha_cierre', 'timestamp', null, array(
+             'type' => 'timestamp',
+             ));
+        $this->hasColumn('activa', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => '1',
+             ));
+    }
 
-  public function setUp()
-  {
-    $this->hasOne('Producto', array('local' => 'producto_id',
-                                    'foreign' => 'id'));
+    public function setUp()
+    {
+        $this->hasOne('Producto', array(
+             'local' => 'producto_id',
+             'foreign' => 'id'));
 
-    $this->hasOne('CategoriaCampaign as Categoria', array('local' => 'categoria_id',
-                                                          'foreign' => 'id'));
+        $this->hasOne('CategoriaCampaign as Categoria', array(
+             'local' => 'categoria_id',
+             'foreign' => 'id'));
 
-    $this->hasOne('Specialty', array('local' => 'specialty_id',
-                                     'foreign' => 'id'));
+        $this->hasOne('Specialty', array(
+             'local' => 'specialty_id',
+             'foreign' => 'id'));
 
-    $this->hasOne('sfGuardUser as Vendedor', array('local' => 'vendedor_id',
-                                                   'foreign' => 'id'));
+        $this->hasOne('sfGuardUser as Vendedor', array(
+             'local' => 'vendedor_id',
+             'foreign' => 'id'));
 
-    $this->hasMany('Item as Items', array('local' => 'id',
-                                          'foreign' => 'campaign_id'));
+        $this->hasMany('Item as Items', array(
+             'local' => 'id',
+             'foreign' => 'campaign_id'));
 
-    $timestampable0 = new Doctrine_Template_Timestampable(array('created' => array('name' => 'fecha_ingreso'), 'updated' => array('name' => 'fecha_actualizacion')));
-    $this->actAs($timestampable0);
-  }
+        $timestampable0 = new Doctrine_Template_Timestampable(array(
+             'created' => 
+             array(
+              'name' => 'fecha_ingreso',
+             ),
+             'updated' => 
+             array(
+              'name' => 'fecha_actualizacion',
+             ),
+             ));
+        $this->actAs($timestampable0);
+    }
 }
