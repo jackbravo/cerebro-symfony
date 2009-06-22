@@ -24,6 +24,10 @@ sfGuardPermission:
     name:           comercial
     description:    Comercial permission
 
+  sgp_operador:
+    name:           operador
+    description:    Operador permission
+
 sfGuardUserPermission:
   sup_admin:
     sfGuardUser:        sgu_admin
@@ -32,6 +36,13 @@ sfGuardUserPermission:
   sup_comercial:
     sfGuardUser:        sgu_comercial
     sfGuardPermission:  sgp_comercial
+
+  sup_operador1:
+    sfGuardUser:        sgu_operador1
+    sfGuardPermission:  sgp_operador
+  sup_operador2:
+    sfGuardUser:        sgu_operador2
+    sfGuardPermission:  sgp_operador
 
 #sfGuardGroup:
   #sgg_admin:
