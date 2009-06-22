@@ -60,6 +60,7 @@ Item:
     id: { type: integer(4), primary: true, autoincrement: true }
     campaign_id: { type: integer(4) }
     plaza_id: { type: integer(4) }
+    position: { type: integer(4) }
     categoria_id: { type: integer(4) }
     tipo_id: { type: integer(4) }
     responsable_id: { type: integer(4) }

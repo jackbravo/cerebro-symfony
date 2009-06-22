@@ -8,6 +8,7 @@
  * @property integer $id
  * @property integer $campaign_id
  * @property integer $plaza_id
+ * @property integer $position
  * @property integer $categoria_id
  * @property integer $tipo_id
  * @property integer $responsable_id
@@ -57,6 +58,10 @@ abstract class BaseItem extends sfDoctrineRecord
              'length' => '4',
              ));
         $this->hasColumn('plaza_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('position', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
              ));

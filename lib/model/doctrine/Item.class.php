@@ -5,5 +5,8 @@
  */
 class Item extends BaseItem
 {
-
+  public function preInsert($event)
+  {
+    $this->position = $this->getTable()->getNextPosition($this->campaign_id, $this->plaza_id);
+  }
 }
