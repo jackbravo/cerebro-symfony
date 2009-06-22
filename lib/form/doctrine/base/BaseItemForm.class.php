@@ -62,7 +62,7 @@ class BaseItemForm extends BaseFormDoctrine
       'instalacion'         => new sfValidatorDateTime(array('required' => false)),
       'desmontaje'          => new sfValidatorDateTime(array('required' => false)),
       'evidencia'           => new sfValidatorBoolean(array('required' => false)),
-      'fecha_actualizacion' => new sfValidatorDateTime(array('required' => false)),
+      'fecha_actualizacion' => new sfValidatorDateTime(),
     ));
 
     $this->widgetSchema->setNameFormat('item[%s]');

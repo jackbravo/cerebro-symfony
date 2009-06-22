@@ -41,8 +41,8 @@ class BaseCampaignForm extends BaseFormDoctrine
       'fecha_inicio'        => new sfValidatorDateTime(array('required' => false)),
       'fecha_cierre'        => new sfValidatorDateTime(array('required' => false)),
       'activa'              => new sfValidatorBoolean(array('required' => false)),
-      'fecha_ingreso'       => new sfValidatorDateTime(array('required' => false)),
-      'fecha_actualizacion' => new sfValidatorDateTime(array('required' => false)),
+      'fecha_ingreso'       => new sfValidatorDateTime(),
+      'fecha_actualizacion' => new sfValidatorDateTime(),
     ));
 
     $this->widgetSchema->setNameFormat('campaign[%s]');
