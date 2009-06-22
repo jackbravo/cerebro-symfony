@@ -15,7 +15,7 @@ class ItemBatchForm extends ItemForm
   {
     parent::configure();
 
-    $select_widgets = array('plaza_id', 'categoria_id', 'tipo_id',
+    $select_widgets = array('categoria_id', 'tipo_id',
       'responsable_id', 'impresor_id', 'mensajeria_id');
 
     foreach ($select_widgets as $widget)

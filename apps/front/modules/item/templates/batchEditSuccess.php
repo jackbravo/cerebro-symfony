@@ -2,10 +2,9 @@
 <?php include_javascripts_for_form($form) ?>
 <h1>Editar múltiples items de la campaña: <?php echo $items['0']->Campaign->nombre ?></h1>
 <form action="<?php echo url_for('@item_batchUpdate')?>" method="post">
-  Items - 
+  Items: 
   <?php foreach ($items as $item): ?>
-    <?php //echo link_to($item->id, 'item_show', $item) . ' ' . $item  ?>
-    <?php echo $item['id'] ?> - 
+    <?php echo $item['id'] ?> - <?php echo $item['Plaza'] ?>, 
     <input type="hidden" name="ids[]" value="<?php echo $item->id ?>" />
   <?php endforeach; ?>
   <br />

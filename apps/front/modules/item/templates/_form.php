@@ -17,15 +17,6 @@
     </tfoot>
     <tbody>
       <?php echo $form->renderGlobalErrors() ?>
-      <?php if (isset($form['plaza_id'])): ?>
-        <tr>
-          <th><?php echo $form['plaza_id']->renderLabel() ?></th>
-          <td>
-            <?php echo $form['plaza_id']->renderError() ?>
-            <?php echo $form['plaza_id'] ?>
-          </td>
-        </tr>
-      <?php endif; ?>
       <?php if (isset($form['categoria_id'])): ?>
         <tr>
           <th><?php echo $form['categoria_id']->renderLabel() ?></th>
