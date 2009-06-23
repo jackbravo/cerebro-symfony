@@ -9,7 +9,7 @@
   <body>
   <?php if($sf_user->isAuthenticated()):?>
     <div id="header">
-      <h1>Good day <i><?php echo $sf_user->getGuardUser()->getUsername()?></i> - Cerebro Management System v0.1 - <a href="<?php echo url_for('/logout') ?>">Logout</a></h1>
+      <h1>Good day <i><?php echo $sf_user->getGuardUser()->getUsername()?></i> - Cerebro Management System v0.1 - <a href="<?php echo url_for('@sf_guard_signout') ?>">Logout</a></h1>
       <p>          
         <?php if ($sf_user->hasCredential(array('admin'))): ?>
         <a href="<?php echo url_for('campaign_new') ?>">Agregar campaña</a>&nbsp;
