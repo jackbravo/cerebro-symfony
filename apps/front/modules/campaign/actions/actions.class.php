@@ -12,19 +12,27 @@ class campaignActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
- //   $this->campaign_list = $this->getRoute()->getObjects();
- 
     if ($request->hasParameter('activa')) {
       $this->getUser()->setAttribute('campaign_activa', $request->getParameter('activa'));
     }
     $activa = $this->getUser()->getAttribute('campaign_activa', 1);
     $q = Doctrine_Query::create()
       ->from('Campaign c')
+      ->leftJoin('c.Vendedor')
+      ->leftJoin('c.Categoria')
+      ->leftJoin('c.Producto')
+      ->leftJoin('c.Specialty')
       ->addWhere('c.activa=?', array($activa));
 
-    if (!$this->getUser()->hasCredential(array('admin', 'comercial'), false)) {
-      $q->leftJoin('c.Items i');
-      $q->addWhere('i.responsable_id = ?', array($this->getUser()->getId()));
+    if ($this->getUser()->hasCredential(array('admin'), false)) {
+    }
+    else if ($this->getUser()->hasCredential(array('comercial'), false)) {
+      $q->addWhere('c.vendedor_id = ?', array($this->getUser()->getId()));
+    }
+    else { // if ($this->getUser()->hasCredential(array('operador'), false))
+      // esto es para mostrar solo las del operador
+      //$q->leftJoin('c.Items i');
+      //$q->addWhere('i.responsable_id = ?', array($this->getUser()->getId()));
     }
 
     $this->campaign_list = $q->execute();
