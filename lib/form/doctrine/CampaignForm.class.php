@@ -13,6 +13,8 @@ class CampaignForm extends BaseCampaignForm
   {
     unset($this['fecha_ingreso'], $this['fecha_actualizacion']);
 
+    $this->widgetSchema['vendedor_id']->setOption('table_method', 'findVendedores');
+
     $this->widgetSchema->setLabels(array(
       'categoria_id' => 'Categoria',
       'vendedor_id' => 'Vendedor',

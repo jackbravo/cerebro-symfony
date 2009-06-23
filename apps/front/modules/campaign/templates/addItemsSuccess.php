@@ -51,7 +51,7 @@ $(document).ready(function(){
                   'getId', '__toString', '')
                 ) ?></td>
       <td><?php echo select_tag('items[responsable_id][]', objects_for_select(
-                  Doctrine::getTable('sfGuardUser')->findAll(),
+                  Doctrine::getTable('sfGuardUser')->findOperadores(),
                   'getId', '__toString', '')
                 ) ?></td>
       <td><a href="#" class="item_remove">Quitar</a></td>

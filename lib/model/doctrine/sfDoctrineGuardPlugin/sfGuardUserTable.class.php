@@ -4,5 +4,22 @@
  */
 class sfGuardUserTable extends PluginsfGuardUserTable
 {
+  public function findOperadores()
+  {
+    return $this->findWithPermission('operador');
+  }
 
+  public function findVendedores()
+  {
+    return $this->findWithPermission('comercial');
+  }
+
+  public function findWithPermission($permission)
+  {
+    return $this->createQuery('u')
+      ->select('u.id, u.username')
+      ->leftJoin('u.permissions p')
+      ->where('p.name = ?', array($permission))
+      ->execute();
+  }
 }
