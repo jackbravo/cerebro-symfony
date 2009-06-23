@@ -47,3 +47,526 @@ Mensajeria:
     nombre: FedEx
   men_2:
     nombre: DHL
+
+sfGuardUser:
+  sgu_admin:
+    username:       admin
+    password:       admin
+    is_super_admin: true
+
+  sgu_comercial:
+    username:       comercial
+    password:       comercial
+  sgu_comercial2:
+    username:       comercial2
+    password:       comercial2
+
+  op_gdl:
+    username:       op_gdl
+    password:       op_gdl
+  op_df:
+    username:       op_df
+    password:       op_df
+
+sfGuardPermission:
+  sgp_admin:
+    name:           admin
+    description:    Administrator permission
+
+  sgp_comercial:
+    name:           comercial
+    description:    Comercial permission
+
+  sgp_operador:
+    name:           operador
+    description:    Operador permission
+
+sfGuardUserPermission:
+  sup_admin:
+    sfGuardUser:        sgu_admin
+    sfGuardPermission:  sgp_admin
+
+  sup_comercial:
+    sfGuardUser:        sgu_comercial
+    sfGuardPermission:  sgp_comercial
+  sup_comercial2:
+    sfGuardUser:        sgu_comercial2
+    sfGuardPermission:  sgp_comercial
+
+  sup_operador1:
+    sfGuardUser:        op_gdl
+    sfGuardPermission:  sgp_operador
+  sup_operador2:
+    sfGuardUser:        op_df
+    sfGuardPermission:  sgp_operador
+
+Campaign:
+  Campaign_1:
+    nombre: 'Campaña 1'
+    Vendedor: sgu_comercial
+    Categoria: cat_ruta
+    Producto: prod
+    Specialty: spec_1
+    cliente: 'Un cliente'
+    orden: '383'
+    facturacion: '1500'
+    fecha_inicio: null
+    fecha_cierre: null
+    activa: true
+    fecha_ingreso: '2009-06-22 14:14:45'
+    fecha_actualizacion: '2009-06-22 14:14:45'
+  Campaign_2:
+    nombre: 'Campaña 2'
+    Vendedor: sgu_comercial2
+    Categoria: cat_btl
+    Producto: prod
+    Specialty: spec_2
+    cliente: 'Un cliente'
+    orden: '384'
+    facturacion: '9000'
+    fecha_inicio: null
+    fecha_cierre: null
+    activa: true
+    fecha_ingreso: '2009-06-22 18:31:54'
+    fecha_actualizacion: '2009-06-22 18:31:54'
+Item:
+  Item_1:
+    Campaign: Campaign_1
+    Plaza: gdl
+    position: '1'
+    Categoria: cat_urb
+    Tipo: t_2
+    Responsable: op_gdl
+    prueba_color: null
+    Impresor: imp_1
+    entrada_impresor: null
+    salida_impresor: null
+    guia: ""
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: ""
+    carroceria: ""
+    compra_directa: ""
+    ruta: ""
+    placas: ""
+    economico: ""
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 15:10:34'
+  Item_2:
+    Campaign: Campaign_1
+    Plaza: gdl
+    position: '2'
+    Categoria: cat_urb
+    Tipo: t_2
+    Responsable: op_gdl
+    prueba_color: null
+    Impresor: imp_1
+    entrada_impresor: null
+    salida_impresor: null
+    guia: ""
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: ""
+    carroceria: ""
+    compra_directa: ""
+    ruta: ""
+    placas: ""
+    economico: ""
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 15:10:34'
+  Item_3:
+    Campaign: Campaign_1
+    Plaza: gdl
+    position: '3'
+    Categoria: cat_urb
+    Tipo: t_1
+    Responsable: op_gdl
+    prueba_color: null
+    Impresor: imp_1
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 15:10:34'
+  Item_4:
+    Campaign: Campaign_1
+    Plaza: gdl
+    position: '4'
+    Categoria: cat_urb
+    Tipo: t_1
+    Responsable: op_gdl
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 14:14:49'
+  Item_5:
+    Campaign: Campaign_1
+    Plaza: df
+    position: '1'
+    Categoria: cat_urb
+    Tipo: t_1
+    Responsable: op_df
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 14:18:21'
+  Item_6:
+    Campaign: Campaign_1
+    Plaza: df
+    position: '2'
+    Categoria: cat_urb
+    Tipo: t_1
+    Responsable: op_df
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 14:18:21'
+  Item_7:
+    Campaign: Campaign_1
+    Plaza: df
+    position: '3'
+    Categoria: cat_urb
+    Tipo: t_1
+    Responsable: op_df
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 14:18:21'
+  Item_8:
+    Campaign: Campaign_1
+    Plaza: df
+    position: '4'
+    Categoria: cat_urb
+    Tipo: t_1
+    Responsable: op_df
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 14:18:21'
+  Item_9:
+    Campaign: Campaign_1
+    Plaza: df
+    position: '5'
+    Categoria: cat_urb
+    Tipo: t_1
+    Responsable: op_df
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 14:18:21'
+  Item_10:
+    Campaign: Campaign_1
+    Plaza: df
+    position: '6'
+    Categoria: cat_urb
+    Tipo: t_1
+    Responsable: op_df
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 14:18:21'
+  Item_11:
+    Campaign: Campaign_1
+    Plaza: gdl
+    position: '5'
+    Categoria: cat_urb
+    Tipo: t_1
+    Responsable: op_gdl
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 14:18:31'
+  Item_12:
+    Campaign: Campaign_1
+    Plaza: gdl
+    position: '6'
+    Categoria: cat_urb
+    Tipo: t_1
+    Responsable: op_gdl
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 14:18:31'
+  Item_13:
+    Campaign: Campaign_1
+    Plaza: gdl
+    position: '7'
+    Categoria: cat_urb
+    Tipo: t_1
+    Responsable: op_gdl
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 14:18:31'
+  Item_14:
+    Campaign: Campaign_2
+    Plaza: gdl
+    position: '1'
+    Categoria: cat_urb
+    Tipo: t_4
+    Responsable: op_gdl
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 18:32:09'
+  Item_15:
+    Campaign: Campaign_2
+    Plaza: gdl
+    position: '2'
+    Categoria: cat_urb
+    Tipo: t_4
+    Responsable: op_gdl
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 18:32:09'
+  Item_16:
+    Campaign: Campaign_2
+    Plaza: gdl
+    position: '3'
+    Categoria: cat_urb
+    Tipo: t_4
+    Responsable: op_gdl
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 18:32:09'
+  Item_17:
+    Campaign: Campaign_2
+    Plaza: gdl
+    position: '4'
+    Categoria: cat_urb
+    Tipo: t_4
+    Responsable: op_gdl
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 18:32:09'
+  Item_18:
+    Campaign: Campaign_2
+    Plaza: gdl
+    position: '5'
+    Categoria: cat_urb
+    Tipo: t_4
+    Responsable: op_gdl
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 18:32:09'
+  Item_19:
+    Campaign: Campaign_2
+    Plaza: gdl
+    position: '6'
+    Categoria: cat_urb
+    Tipo: t_4
+    Responsable: op_gdl
+    prueba_color: null
+    entrada_impresor: null
+    salida_impresor: null
+    guia: null
+    fecha_envio: null
+    fecha_recepcion: null
+    permisionario: null
+    carroceria: null
+    compra_directa: null
+    ruta: null
+    placas: null
+    economico: null
+    instalacion: null
+    desmontaje: null
+    evidencia: false
+    fecha_actualizacion: '2009-06-22 18:32:09'
