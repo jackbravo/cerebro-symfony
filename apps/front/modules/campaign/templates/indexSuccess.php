@@ -1,6 +1,6 @@
 <h1>Listado de campañas <?php echo $sf_user->getAttribute('campaign_activa', 1) == 1 ? 'activas' : 'inactivas' ;?></h1>
-<?php if (sizeof($campaign_list)>0){?>
-<?php foreach ($campaign_list as $campaign): ?>
+<?php if ($pager->getNbResults() > 0) { ?>
+<?php foreach ($pager->getResults() as $campaign) { ?>
 <table id="box-table-a" summary="Detalles de campaña - <?php echo $campaign->getnombre()?>">
   <thead>
     <tr>
@@ -30,7 +30,7 @@
       <td title="Cliente" class="hideextra" style="width:400px"><?php echo $campaign->getCliente() ?></td>
       <td title="No. de orden" class="hideextra" style="width:400px"><?php echo $campaign->getOrden() ?></td>
       <?php if ($sf_user->hasCredential(array('admin'))):?>
-      <td title="Facturación" class="hideextra" style="width:400px">$<?php echo $campaign->getFacturacion() ?> MXN</td>
+        <td title="Facturación" class="hideextra" style="width:400px">$<?php echo $campaign->getFacturacion() ?> MXN</td>
       <?php endif; ?>
       <td title="Duración" class="hideextra" style="width:400px"><?php echo round($campaign->getDuracion()/86400,1) ." d<br/>".round(($campaign->getDuracion()/86400)/7,1)." w"?></td>
       <td title="Inicio" class="hideextra" style="width:400px"><?php echo $campaign->getfecha_inicio() ?></td>
@@ -52,7 +52,7 @@
       else {
         $rows = Doctrine::getTable('Campaign')->getItemResume($campaign->id, $sf_user->getId());
       }
-      foreach ($rows as $row): ?><?php /*Esta función yo la hice y está en l/m/d/CampaignTable.class.php*/
+      foreach ($rows as $row) { ?><?php /*Esta función yo la hice y está en l/m/d/CampaignTable.class.php*/
         $total += $row['Total'];
         $total_instalados += $row['Instalados'];
         $total_desmontados += $row['Desmontados'];
@@ -63,7 +63,7 @@
         <td><?php echo $row['Instalados']?></td>
         <td><?php echo $row['Desmontados']?></td>
       </tr>
-      <?php endforeach; ?>
+      <?php } ?>
       <tr>
         <td><strong>Total</strong></td>
         <td><strong><?php echo $total?></strong></td>
@@ -72,11 +72,15 @@
       </tr>
   </tbody>
 </table>
-<?php endforeach; 
+
+<?php }
+
+  include_partial('campaign/pager', array('pager' => $pager));
+
 }
-else{
-  echo "<h4>No existen campañas ";
+else {
+  echo "<p>No existen campañas ";
   echo $sf_user->getAttribute('campaign_activa', 1) == 1 ? 'activas' : 'inactivas' ;
-  echo " en este momento</h4>";
-}?>
-  
+  echo " en este momento.</p>";
+}
+

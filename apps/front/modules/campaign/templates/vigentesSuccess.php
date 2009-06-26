@@ -44,7 +44,7 @@
 <?php }
 }
 else {
-  echo "<h4>No existen campañas ";
+  echo "<p>No existen campañas ";
   echo $sf_user->getAttribute('campaign_activa', 1) == 1 ? 'activas' : 'inactivas' ;
-  echo " en este momento</h4>";
+  echo " en este momento</p>";
 }

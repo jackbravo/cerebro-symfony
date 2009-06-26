@@ -34,7 +34,10 @@ class campaignActions extends sfActions
       //$q->addWhere('i.responsable_id = ?', array($this->getUser()->getId()));
     }
 
-    $this->campaign_list = $q->execute();
+    $this->pager = new sfDoctrinePager('Campaign', 10);
+    $this->pager->setQuery($q);
+    $this->pager->setPage($request->getParameter('page', 1));
+    $this->pager->init();
   }
 
   public function executeVigentes(sfWebRequest $request)
