@@ -74,6 +74,7 @@ campaign:
   class: sfDoctrineRouteCollection
   options:
     model:  Campaign
+    with_wildcard_routes: true
     object_actions: { addItems: get, createItems: post }
 
 item:

@@ -19,4 +19,48 @@ class CampaignTable extends Doctrine_Table
     $sth->execute($params); // Ejecuta el query y reemplaza el signo ? por lo que le manda en el arreglo
     return $sth->fetchAll(PDO::FETCH_ASSOC); //devuelve el resultado y le dá a cada campo del array el nombre que establecí arriba
   }
+
+  public function getOngoingItemResume($id)
+  {
+    $dbh = $this->getConnection();
+    $sql = "
+      SELECT p.nombre as 'Plaza', count(i.id) as 'Total', count(i.instalacion) as 'Instalados'
+      FROM item i LEFT JOIN plaza p ON p.id=i.plaza_id
+      WHERE i.campaign_id = ?
+      GROUP BY i.plaza_id
+    ";
+    $sth = $dbh->prepare($sql); //Prepara el query de arriba para evitar inyección de SQL
+    $sth->execute(array($id)); // Ejecuta el query y reemplaza el signo ? por lo que le manda en el arreglo
+    return $sth->fetchAll(PDO::FETCH_ASSOC); //devuelve el resultado y le dá a cada campo del array el nombre que establecí arriba
+  }
+
+  public function getFinishedItemResume($id)
+  {
+    $dbh = $this->getConnection();
+    $sql = "
+      SELECT p.nombre as 'Plaza', count(i.id) as 'Total', count(i.desmontaje) as 'Desinstalados'
+      FROM item i LEFT JOIN plaza p ON p.id=i.plaza_id
+      WHERE i.campaign_id = ?
+      GROUP BY i.plaza_id
+    ";
+    $sth = $dbh->prepare($sql); //Prepara el query de arriba para evitar inyección de SQL
+    $sth->execute(array($id)); // Ejecuta el query y reemplaza el signo ? por lo que le manda en el arreglo
+    return $sth->fetchAll(PDO::FETCH_ASSOC); //devuelve el resultado y le dá a cada campo del array el nombre que establecí arriba
+  }
+
+  public function findOngoingCampaigns()
+  {
+    return Doctrine::getTable('Campaign')->createQuery('c')
+      ->addWhere('DATEDIFF(NOW(), c.fecha_cierre) < 0')
+      ->addWhere('c.activa=1')
+      ->execute();
+  }
+
+  public function findFinishedCampaigns()
+  {
+    return Doctrine::getTable('Campaign')->createQuery('c')
+      ->addWhere('DATEDIFF(NOW(), c.fecha_cierre) >= 0')
+      ->addWhere('c.activa=1')
+      ->execute();
+  }
 }

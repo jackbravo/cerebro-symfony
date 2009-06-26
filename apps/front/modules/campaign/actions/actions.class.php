@@ -16,8 +16,7 @@ class campaignActions extends sfActions
       $this->getUser()->setAttribute('campaign_activa', $request->getParameter('activa'));
     }
     $activa = $this->getUser()->getAttribute('campaign_activa', 1);
-    $q = Doctrine_Query::create()
-      ->from('Campaign c')
+    $q = Doctrine::getTable('Campaign')->createQuery('c')
       ->leftJoin('c.Vendedor')
       ->leftJoin('c.Categoria')
       ->leftJoin('c.Producto')
@@ -36,6 +35,16 @@ class campaignActions extends sfActions
     }
 
     $this->campaign_list = $q->execute();
+  }
+
+  public function executeVigentes(sfWebRequest $request)
+  {
+    $this->ongoing = Doctrine::getTable('Campaign')->findOngoingCampaigns();
+  }
+
+  public function executeFinalizadas(sfWebRequest $request)
+  {
+    $this->finished = Doctrine::getTable('Campaign')->findFinishedCampaigns();
   }
 
   public function executeShow(sfWebRequest $request)
