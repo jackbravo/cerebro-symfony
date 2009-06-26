@@ -13,8 +13,8 @@ Campaign:
     cliente: { type: string(255) }
     orden: { type: string(255) }
     facturacion: { type: float }
-    fecha_inicio: { type: timestamp }
-    fecha_cierre: { type: timestamp }
+    fecha_inicio: { type: timestamp, notnull: true }
+    fecha_cierre: { type: timestamp, notnull: true }
     activa: { type: boolean, default: 1 }
   relations:
     Producto:

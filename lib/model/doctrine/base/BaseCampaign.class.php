@@ -73,9 +73,11 @@ abstract class BaseCampaign extends sfDoctrineRecord
              ));
         $this->hasColumn('fecha_inicio', 'timestamp', null, array(
              'type' => 'timestamp',
+             'notnull' => true,
              ));
         $this->hasColumn('fecha_cierre', 'timestamp', null, array(
              'type' => 'timestamp',
+             'notnull' => true,
              ));
         $this->hasColumn('activa', 'boolean', null, array(
              'type' => 'boolean',

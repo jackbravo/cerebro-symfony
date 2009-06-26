@@ -110,8 +110,8 @@ Campaign:
     cliente: 'Un cliente'
     orden: '383'
     facturacion: '1500'
-    fecha_inicio: null
-    fecha_cierre: null
+    fecha_inicio: '2009-06-06 14:15:15'
+    fecha_cierre: '2009-06-26 14:15:15'
     activa: true
     fecha_ingreso: '2009-06-22 14:14:45'
     fecha_actualizacion: '2009-06-22 14:14:45'
@@ -124,8 +124,8 @@ Campaign:
     cliente: 'Un cliente'
     orden: '384'
     facturacion: '9000'
-    fecha_inicio: null
-    fecha_cierre: null
+    fecha_inicio: '2009-06-28 14:15:15'
+    fecha_cierre: '2009-07-04 14:15:15'
     activa: true
     fecha_ingreso: '2009-06-22 18:31:54'
     fecha_actualizacion: '2009-06-22 18:31:54'
