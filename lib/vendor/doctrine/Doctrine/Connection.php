@@ -1,6 +1,6 @@
 <?php
 /*
- *  $Id: Connection.php 5893 2009-06-16 15:25:42Z jwage $
+ *  $Id: Connection.php 6152 2009-07-21 21:59:32Z jwage $
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -49,7 +49,7 @@
  * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
  * @link        www.phpdoctrine.org
  * @since       1.0
- * @version     $Revision: 5893 $
+ * @version     $Revision: 6152 $
  * @author      Konsta Vesterinen <kvesteri@cc.hut.fi>
  * @author      Lukas Smith <smith@pooteeweet.org> (MDB2 library)
  */
@@ -1654,24 +1654,17 @@ abstract class Doctrine_Connection extends Doctrine_Configurable implements Coun
             $name = $generated;
         }
 
-        $count = 1;
-
         while (in_array($name, $this->_usedNames[$type])) {
             $e = explode('_', $name);
             $end = end($e);
 
             if (is_numeric($end)) {
-              unset($e[count($e) - 1]);
-              $fkName = implode('_', $e);
-            }
-
-            $name = $name . '_' . $count;
-
-            if (strlen($name) > $maxLength) {
-                $name = substr($name, 0, $maxLength - strlen($count)) . '_' . $count;
-            }
-
-            $count++;
+                unset($e[count($e) - 1]);
+                $fkName = implode('_', $e);
+                $name = $fkName . '_' . ++$end; 
+            } else { 
+                $name .= '_1'; 
+	        }
         }
 
         $this->_usedNames[$type][$key] = $name;

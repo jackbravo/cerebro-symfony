@@ -1,6 +1,6 @@
 <?php
 /*
- *  $Id: Doctrine.php 5887 2009-06-15 07:07:01Z jwage $
+ *  $Id: Doctrine.php 6160 2009-07-24 19:20:08Z jwage $
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -29,7 +29,7 @@
  * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
  * @link        www.phpdoctrine.org
  * @since       1.0
- * @version     $Revision: 5887 $
+ * @version     $Revision: 6160 $
  */
 final class Doctrine
 {
@@ -543,7 +543,7 @@ final class Doctrine
 
                             $declaredAfter = get_declared_classes();
                             // Using array_slice because array_diff is broken is some PHP versions
-                            $foundClasses = array_slice($declaredAfter, count($declaredBefore) - 1);
+                            $foundClasses = array_slice($declaredAfter, count($declaredBefore));
                             if ($foundClasses) {
                                 foreach ($foundClasses as $className) {
                                     if (self::isValidModelClass($className)) {
@@ -563,7 +563,7 @@ final class Doctrine
                 }
             }
         }
-
+        asort($loadedModels);
         return $loadedModels;
     }
 

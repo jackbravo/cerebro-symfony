@@ -1,6 +1,6 @@
 <?php
 /*
- *  $Id: Record.php 5876 2009-06-10 18:43:12Z piccoloprincipe $
+ *  $Id: Record.php 6163 2009-07-24 19:53:47Z jwage $
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -29,7 +29,7 @@
  * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
  * @link        www.phpdoctrine.org
  * @since       1.0
- * @version     $Revision: 5876 $
+ * @version     $Revision: 6163 $
  */
 abstract class Doctrine_Record extends Doctrine_Record_Abstract implements Countable, IteratorAggregate, Serializable
 {
@@ -1790,8 +1790,11 @@ abstract class Doctrine_Record extends Doctrine_Record_Abstract implements Count
 
             $columnValue = $this->get($column);
 
-            $a[$column] = ($columnValue instanceof Doctrine_Record)
-                ? $columnValue->toArray($deep, $prefixKey) : $columnValue;
+            if ($columnValue instanceof Doctrine_Record) {
+                $a[$column] = $columnValue->getIncremented();
+            } else {
+                $a[$column] = $columnValue;
+            }
         }
 
         if ($this->_table->getIdentifierType() ==  Doctrine::IDENTIFIER_AUTOINC) {
@@ -1872,7 +1875,7 @@ abstract class Doctrine_Record extends Doctrine_Record_Abstract implements Count
                         $this->$key->fromArray($value, $deep);
                     }
                 }
-            } else if ($this->getTable()->hasField($key)) {
+            } else if ($this->getTable()->hasField($key) || array_key_exists($key, $this->_values)) {
                 $this->set($key, $value);
             } else {
                 $method = 'set' . Doctrine_Inflector::classify($key);
