@@ -12,6 +12,7 @@ class sfGuardUserForm extends PluginsfGuardUserForm
   public function configure()
   {
     unset(
+      $this['is_super_admin'],
       $this['last_login'],
       $this['created_at'],
       $this['updated_at'],
