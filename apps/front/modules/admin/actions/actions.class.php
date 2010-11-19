@@ -17,6 +17,7 @@ class adminActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
+    /*
    $q = Doctrine_Query::create()
      ->from('Producto p');
 //     ->where('p.activa=true');
@@ -45,5 +46,6 @@ class adminActions extends sfActions
      ->from('sfGuardUser usr');
 //     ->where('t.activa=true');
      $this->usr_list = $q->execute();
+     */
   }
 }
